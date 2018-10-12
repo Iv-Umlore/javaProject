@@ -11,10 +11,12 @@ package javamainlab.Client;
  */
 public class Login extends javax.swing.JFrame {
 
+    public boolean isLogin;
     /**
      * Creates new form Login
      */
     public Login() {
+        isLogin = false;
         initComponents();
     }
 
@@ -37,6 +39,11 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Подтвердить");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setEditable(false);
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,6 +98,11 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        isLogin = true;
+        System.out.print(isLogin);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -122,7 +134,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
-            }
+            }            
         });
     }
 

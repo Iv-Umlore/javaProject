@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package javamainlab.Client;
 
+import javamainlab.Client.Login;
 /**
  *
  * @author Umlore
@@ -138,6 +140,12 @@ public class ClientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Login ll = new Login();
+        ll.main(args);
+        while(!ll.isLogin) {
+            System.out.println(ll.isLogin);
+        };
+        // 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ClientGUI().setVisible(true);
