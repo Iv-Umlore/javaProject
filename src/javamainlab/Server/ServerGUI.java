@@ -5,12 +5,22 @@
  */
 package javamainlab.Server;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Umlore
  */
 public class ServerGUI extends javax.swing.JFrame {
 
+    private ServerSocket ss;
+    boolean IsStarted = false;
+    
+    Server serv;
     /**
      * Creates new form ServerGUI
      */
@@ -71,11 +81,26 @@ public class ServerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        if (!IsStarted){
+            try {
+                ss = new ServerSocket(1234);
+                serv = new Server(ss);
+                IsStarted = true;
+                serv.start();
+            } catch (IOException ex) {
+                Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            ss.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -106,6 +131,7 @@ public class ServerGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+                
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ServerGUI().setVisible(true);
