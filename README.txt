@@ -1,3 +1,3 @@
 Repositiries for Java Lab
 
-![picture](/pict.png "Ñץולא")
+![picture](/pict.png "Shem")
