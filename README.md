@@ -1,4 +1,4 @@
 Repositiries for Java Lab
 
 
-![picture](/pict.png "Shem")
+![picture](pict.png "Shem")
