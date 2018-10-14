@@ -5,21 +5,25 @@
  */
 package javamainlab.Client;
 
+
 /**
  *
  * @author Umlore
  */
 public class Login extends javax.swing.JFrame {
 
-    public boolean isLogin;
+    private boolean isLogin = false;
     /**
      * Creates new form Login
      */
     public Login() {
-        isLogin = false;
         initComponents();
     }
-
+    
+    public boolean IsLogin(){
+        return isLogin;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,13 +104,13 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         isLogin = true;
-        System.out.print(isLogin);
+        System.out.println(IsLogin());   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -133,7 +137,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                    new Login().setVisible(true);
             }            
         });
     }
