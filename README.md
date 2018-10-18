@@ -2,11 +2,11 @@ Repositiries for Java Lab
 
 Interface Interaction:
 
-![picture] (Scheme.jpg)
+![picture](Scheme.jpg)
 
 Server device:
 
-![picture] (Sсheme2.jpg)
+![picture](Sсheme2.jpg)
 
 
-![picture] (pict.jpg)
+![picture](pict.jpg)
