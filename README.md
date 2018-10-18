@@ -6,6 +6,6 @@ Interface Interaction:
 
 Server device:
 
-![picture](Scheme 2.jpg)
+![picture](Scheme_2.jpg)
 
 ![picture](pict.jpg)
