@@ -14,6 +14,8 @@ import javamainlab.Client.Login;
  */
 public class ClientGUI extends javax.swing.JFrame {
 
+    int speed = 1;
+    
     public boolean log;
     
     /**
@@ -60,6 +62,11 @@ public class ClientGUI extends javax.swing.JFrame {
         });
 
         jToggleButton2.setText("x2");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jToggleButton3.setText("x5");
 
@@ -111,8 +118,17 @@ public class ClientGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        System.out.println(speed);
+        
+        speed = 20;
+        System.out.println(speed);
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        System.out.println(speed);
+        speed = 1;
+        System.out.println(speed);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
@@ -143,13 +159,13 @@ public class ClientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        Login ll = new Login();
+       /* Login ll = new Login();
         ll.main(args);
         while(!ll.IsLogin()) {
             TimeUnit.SECONDS.sleep(3);
-            System.out.println(ll.IsLogin() + " Client");       
+            System.out.println(ll.IsLogin() + " Client");      
             // не работает так как надо из-за статичность main
-        };
+        };*/
         // 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

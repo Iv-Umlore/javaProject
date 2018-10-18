@@ -13,4 +13,8 @@ import java.util.ArrayList;
  */
 public class Tree {
     int[][] colorPixel;
+    
+    public Tree(){
+        
+    }
 }
