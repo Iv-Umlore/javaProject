@@ -5,6 +5,7 @@
  */
 package javamainlab.Client;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -62,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         jTextField1.setEditable(false);
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jTextField4.setEditable(false);
         jTextField4.setText("Логин");
@@ -115,36 +115,42 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*while (this.IsLogin()) {
-            try {
-                client = new Socket("localhost",1234);
-                dis = new DataInputStream(client.getInputStream());
-                dos = new DataOutputStream(client.getOutputStream());
+          
+        try {
+            client = new Socket("localhost",1234);
+            dis = new DataInputStream(client.getInputStream());
+            dos = new DataOutputStream(client.getOutputStream());
+             
+                
                 str = jTextField2.getText();
                 System.out.println(str);
                 dos.writeUTF(str);
                 dos.flush();
-                str = jPasswordField1.getSelectedText();
+                str = jPasswordField1.getText();
                 System.out.println(str);
                 dos.writeUTF(str);
                 dos.flush();
                 
                 isLogin = dis.readBoolean();
-                if (isLogin) jTextField1.setText("Password is correct");
-                else jTextField1.setText("Password is not correct");
+                System.out.println(isLogin);
+                if (isLogin) 
+                    jTextField1.setText("Password is correct");
+                else 
+                     jTextField1.setText("Password is not correct");
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/
         
-        ClientGUI CGU = new ClientGUI();
-        String[] args = null;
-        try {
-            CGU.main(args);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        if (isLogin) {
+            ClientGUI CGU = new ClientGUI();
+            String[] args = null;
+            try {
+                CGU.main(args);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
         }
-        dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

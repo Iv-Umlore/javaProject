@@ -39,8 +39,8 @@ public class Server  extends Thread {
     
     @Override
     public void run(){
-        System.out.print(this.getId());
-       /* try {
+        System.out.println(this.getId());
+        try {
             while (true) {
                 socket = ss.accept();
                 dis = new DataInputStream(socket.getInputStream());
@@ -49,12 +49,20 @@ public class Server  extends Thread {
                 pass = dis.readUTF();
                 
                 System.out.println(Login + " " + pass);
-                if ((Login == "admin") && (pass == "admin")) dos.writeBoolean(true);
-                else dos.writeBoolean(false);
+                if ((Login.equalsIgnoreCase("admin")) && (pass.equalsIgnoreCase("admin"))) {
+                    dos.writeBoolean(true);
+                    System.out.println("true");
+                    dos.flush();
+                }
+                else {
+                    dos.writeBoolean(false);
+                    System.out.println("false");
+                    dos.flush();
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
     
 }
