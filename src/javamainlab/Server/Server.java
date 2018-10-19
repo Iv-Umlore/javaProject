@@ -5,6 +5,8 @@
  */
 package javamainlab.Server;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -26,7 +28,9 @@ public class Server  extends Thread {
     
     private ServerSocket ss;
     private Socket socket;
-    
+    private DataInputStream dis;
+    private DataOutputStream dos;
+    private String Login, pass;
     
     
     public Server(ServerSocket SeSo){
@@ -36,13 +40,21 @@ public class Server  extends Thread {
     @Override
     public void run(){
         System.out.print(this.getId());
-        try {
+       /* try {
             while (true) {
                 socket = ss.accept();
+                dis = new DataInputStream(socket.getInputStream());
+                dos = new DataOutputStream(socket.getOutputStream());
+                Login = dis.readUTF();
+                pass = dis.readUTF();
+                
+                System.out.println(Login + " " + pass);
+                if ((Login == "admin") && (pass == "admin")) dos.writeBoolean(true);
+                else dos.writeBoolean(false);
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
 }
