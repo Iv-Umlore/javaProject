@@ -36,7 +36,7 @@ public class Server  extends Thread {
     private DataInputStream dis;
     private DataOutputStream dos;
     private String Login, pass;
-    private boolean flag;
+    //private boolean flag;
     
     
     private Hashtable users;
@@ -56,13 +56,13 @@ public class Server  extends Thread {
                 pass = pass + (char)i;
             }
             
-            //System.out.println(Login + " " + pass);
+            System.out.print(Login + " " + pass + " ");
             HT.put(Login, pass);
         }
         FR.close();
         return HT;
     }
-    
+    /*
     private void SaveHT() throws IOException{
         FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
         String Login = "";
@@ -70,13 +70,13 @@ public class Server  extends Thread {
            FW.write((String) key + " " + users.get(key) + '\n');
            System.out.println(key + " " +users.get(key)); 
         }
+        FW.write(-1);
         FW.close();
     }
-    
+    */
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
         users = CreateHT();
-        SaveHT();
     }
     
     @Override
