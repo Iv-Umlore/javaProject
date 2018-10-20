@@ -63,20 +63,21 @@ public class Server  extends Thread {
         return HT;
     }
     
-    private void SaveHT() throws IOException{
-        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
+  /*  private void SaveHT() throws IOException{
+        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users2.txt");
         String Login = "";
         for (Object key : users.keySet()) {
            FW.write((String) key + " " + users.get(key) + '\n');
            System.out.println(key + " " +users.get(key)); 
         }
+        FW.write(-1);
         FW.close();
-    }
+    }*/
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
         users = CreateHT();
-        SaveHT();
+        //SaveHT();
     }
     
     @Override
