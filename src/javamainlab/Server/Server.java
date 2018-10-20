@@ -9,10 +9,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,22 +56,32 @@ public class Server  extends Thread {
                 pass = pass + (char)i;
             }
             
-            System.out.println(Login + " " + pass);
+            //System.out.println(Login + " " + pass);
             HT.put(Login, pass);
         }
+        FR.close();
         return HT;
     }
     
-    
+    private void SaveHT() throws IOException{
+        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
+        String Login = "";
+        for (Object key : users.keySet()) {
+           FW.write((String) key + " " + users.get(key) + '\n');
+           System.out.println(key + " " +users.get(key)); 
+        }
+        FW.close();
+    }
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
         users = CreateHT();
+        SaveHT();
     }
     
     @Override
     public void run(){
-        System.out.println(this.getId());
+        //System.out.println(this.getId());
         try {
             while (true) {
                 socket = ss.accept();
