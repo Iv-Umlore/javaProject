@@ -35,7 +35,6 @@ public class Server  extends Thread {
     private DataInputStream dis;
     private DataOutputStream dos;
     private String Login, pass;
-    //private boolean flag;
     
     
     private Hashtable users;
@@ -46,19 +45,25 @@ public class Server  extends Thread {
         int i = 0;
         while ((i = FR.read())!= -1){
             Login = "";
-            pass = "";
+            pass = "";           
+            
             while((char)i !=' '){
                 Login = Login + (char)i;
-                i = FR.read();                
+                i = FR.read();                 
             }
-            while (((i = FR.read()) != '\n') && (i != -1))  {
-                pass = pass + (char)i;
-            }
-            
-            System.out.print(Login + " " + pass + " ");
+            while (((char)(i = FR.read()) != '\r') && (i != -1))  {
+                pass = pass + (char)i;                
+            } 
+            i = FR.read();
+            //System.out.println(Login + " " + pass); 
             HT.put(Login, pass);
         }
         FR.close();
+        
+        for (Object key : HT.keySet()) {           
+           System.out.println(key + " " +HT.get(key)); 
+        }
+        
         return HT;
     }
     /*
@@ -91,14 +96,13 @@ public class Server  extends Thread {
                 
                 System.out.println(Login + " " + pass);
                 System.out.println(users.get(Login));
-                if ((pass.equals(users.get(Login)))) {
+                
+                if (pass.equals(users.get(Login))) {
                     dos.writeBoolean(true);
-                    System.out.println("true");
                     dos.flush();
                 }
                 else {
                     dos.writeBoolean(false);
-                    System.out.println("false");
                     dos.flush();
                 }
             }
