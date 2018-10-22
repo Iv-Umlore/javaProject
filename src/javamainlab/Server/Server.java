@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +35,6 @@ public class Server  extends Thread {
     private DataInputStream dis;
     private DataOutputStream dos;
     private String Login, pass;
-    private boolean flag;
     
     
     private Hashtable users;
@@ -47,22 +45,29 @@ public class Server  extends Thread {
         int i = 0;
         while ((i = FR.read())!= -1){
             Login = "";
-            pass = "";
+            pass = "";           
+            
             while((char)i !=' '){
                 Login = Login + (char)i;
-                i = FR.read();                
+                i = FR.read();                 
             }
-            while (((i = FR.read()) != '\n') && (i != -1))  {
-                pass = pass + (char)i;
-            }
-            
-            //System.out.println(Login + " " + pass);
+            while (((char)(i = FR.read()) != '\r') && (i != -1))  {
+                pass = pass + (char)i;                
+            } 
+            i = FR.read();
+            //System.out.println(Login + " " + pass); 
             HT.put(Login, pass);
         }
         FR.close();
+        
+        for (Object key : HT.keySet()) {           
+           System.out.println(key + " " +HT.get(key)); 
+        }
+        
         return HT;
     }
     
+<<<<<<< HEAD
   /*  private void SaveHT() throws IOException{
         FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users2.txt");
         String Login = "";
@@ -70,6 +75,19 @@ public class Server  extends Thread {
            FW.write((String) key + " " + users.get(key) + '\n');
            System.out.println(key + " " +users.get(key)); 
         }
+=======
+    private void SaveHT() throws IOException{
+        int i=1;
+        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
+        String Login = "";
+        for (Object key : users.keySet()) {
+           FW.write((String) key + " " + users.get(key) + '\r');
+           if (i < users.size()){
+               FW.write('\n');
+               i++;
+           }
+        }        
+>>>>>>> SecondB
         FW.write(-1);
         FW.close();
     }*/
@@ -93,14 +111,13 @@ public class Server  extends Thread {
                 
                 System.out.println(Login + " " + pass);
                 System.out.println(users.get(Login));
-                if ((pass.equals(users.get(Login)))) {
+                
+                if (pass.equals(users.get(Login))) {
                     dos.writeBoolean(true);
-                    System.out.println("true");
                     dos.flush();
                 }
                 else {
                     dos.writeBoolean(false);
-                    System.out.println("false");
                     dos.flush();
                 }
             }

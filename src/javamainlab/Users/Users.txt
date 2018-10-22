@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 admin admin1
+=======
+default 209147182741312
+admin admin
+>>>>>>> SecondB
 Umlore 1234
