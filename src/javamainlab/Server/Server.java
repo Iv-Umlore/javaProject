@@ -16,7 +16,7 @@ import java.net.Socket;
 import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javamainlab.Server.HashTable;
 // Возможный выход во время завершения работы сервера. Оставим на будущее
 
 
@@ -34,58 +34,13 @@ public class Server  extends Thread {
     private Socket socket;
     private DataInputStream dis;
     private DataOutputStream dos;
-    private String Login, pass;
+    private String Login, pass , operation;
     
-    
-    private Hashtable users;
-    
-    private Hashtable CreateHT() throws FileNotFoundException, IOException{
-        Hashtable<String,String> HT = new Hashtable<String,String>();
-        FileReader FR = new FileReader("src\\javamainlab\\Users\\Users.txt");
-        int i = 0;
-        while ((i = FR.read())!= -1){
-            Login = "";
-            pass = "";           
-            
-            while((char)i !=' '){
-                Login = Login + (char)i;
-                i = FR.read();                 
-            }
-            while (((char)(i = FR.read()) != '\r') && (i != -1))  {
-                pass = pass + (char)i;                
-            } 
-            i = FR.read();
-            //System.out.println(Login + " " + pass); 
-            HT.put(Login, pass);
-        }
-        FR.close();
-        
-        for (Object key : HT.keySet()) {           
-           System.out.println(key + " " +HT.get(key)); 
-        }
-        
-        return HT;
-    }
-    
-    private void SaveHT() throws IOException{
-        int i=1;
-        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
-        String Login = "";
-        for (Object key : users.keySet()) {
-           FW.write((String) key + " " + users.get(key) + '\r');
-           if (i < users.size()){
-               FW.write('\n');
-               i++;
-           }
-        }        
-        FW.write(-1);
-        FW.close();
-    }
+    HashTable users;
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
-        users = CreateHT();
-        //SaveHT();
+        users = new HashTable();
     }
     
     @Override
@@ -96,24 +51,42 @@ public class Server  extends Thread {
                 socket = ss.accept();
                 dis = new DataInputStream(socket.getInputStream());
                 dos = new DataOutputStream(socket.getOutputStream());
-                Login = dis.readUTF();
-                pass = dis.readUTF();
                 
-                System.out.println(Login + " " + pass);
-                System.out.println(users.get(Login));
-                
-                if (pass.equals(users.get(Login))) {
-                    dos.writeBoolean(true);
+                operation = dis.readUTF();
+                if (operation.equals("check")) {
+                    Login = dis.readUTF();
+                    pass = dis.readUTF();
+
+                    System.out.println(Login + " " + pass);
+
+                    dos.writeBoolean(users.CheckLogPas(Login, pass));
                     dos.flush();
                 }
-                else {
-                    dos.writeBoolean(false);
-                    dos.flush();
+                
+                if (operation.equals("registrate")) {
+                    try {    
+                    Login = dis.readUTF();
+                    pass = dis.readUTF();                  
+                    
+                        dos.writeBoolean(users.Registration(Login, pass));
+                        dos.flush();
+                    } catch (IOException ex) {
+                        try {
+                            dos.writeBoolean(false);
+                            dos.flush();
+                        } catch (IOException ex1) {
+                            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex1);
+                        }
+                    }
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private HashTable HashTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
