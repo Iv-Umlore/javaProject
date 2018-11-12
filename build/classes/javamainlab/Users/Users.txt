@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-admin admin1
-=======
-default 209147182741312
-admin admin
->>>>>>> SecondB
-Umlore 1234
+﻿admin admin￿
+default 23451023
+Umlore 1234￿

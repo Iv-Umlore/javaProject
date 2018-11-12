@@ -55,7 +55,7 @@ public class Server  extends Thread {
                 pass = pass + (char)i;                
             } 
             i = FR.read();
-            //System.out.println(Login + " " + pass); 
+            System.out.println(Login + " " + pass); 
             HT.put(Login, pass);
         }
         FR.close();
@@ -67,15 +67,6 @@ public class Server  extends Thread {
         return HT;
     }
     
-<<<<<<< HEAD
-  /*  private void SaveHT() throws IOException{
-        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users2.txt");
-        String Login = "";
-        for (Object key : users.keySet()) {
-           FW.write((String) key + " " + users.get(key) + '\n');
-           System.out.println(key + " " +users.get(key)); 
-        }
-=======
     private void SaveHT() throws IOException{
         int i=1;
         FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
@@ -87,10 +78,9 @@ public class Server  extends Thread {
                i++;
            }
         }        
->>>>>>> SecondB
         FW.write(-1);
         FW.close();
-    }*/
+    }
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
