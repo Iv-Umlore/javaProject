@@ -69,7 +69,7 @@ public class Server  extends Thread {
     
     private void SaveHT() throws IOException{
         int i=1;
-        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users.txt");
+        FileWriter FW = new FileWriter("src\\javamainlab\\Users\\Users2.txt");
         String Login = "";
         for (Object key : users.keySet()) {
            FW.write((String) key + " " + users.get(key) + '\r');
