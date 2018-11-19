@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Umlore
  */
-public class Login extends javax.swing.JFrame {
+public class LoginGUI extends javax.swing.JFrame {
 
     private Socket client;
     FirstWindowInterface FWI;
@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginGUI() {
         FWI = new FirstWindow();
         initComponents();
     }
@@ -133,7 +133,7 @@ public class Login extends javax.swing.JFrame {
             else 
                  jTextField1.setText("Password is not correct");
             } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         if (isLogin) {
@@ -142,7 +142,7 @@ public class Login extends javax.swing.JFrame {
             try {
                 CGU.main(args);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             dispose();
         }
@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
             else 
                  jTextField1.setText("Try Later");
             } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -180,14 +180,16 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -196,7 +198,7 @@ public class Login extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                    new Login().setVisible(true);
+                    new LoginGUI().setVisible(true);
             }            
         });
     }
