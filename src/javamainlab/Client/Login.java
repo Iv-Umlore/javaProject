@@ -23,7 +23,7 @@ public class Login extends javax.swing.JFrame {
     private Socket client;
     private DataOutputStream dos;
     private DataInputStream dis;
-    private  String str;
+    private String str;
     
     private boolean isLogin = false;
     /**
