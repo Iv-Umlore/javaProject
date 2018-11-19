@@ -5,11 +5,14 @@
  */
 package javamainlab.Client;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+
 /**
  *
  * @author Umlore
  */
 public interface FirstWindowInterface {
-    void Registration(String Login, String pass);
-    void Authorization();
+    boolean Registration(String Login, String pass, DataInputStream dis, DataOutputStream dos);
+    boolean Authorization(String Login, String pass, DataInputStream dis, DataOutputStream dos);
 }

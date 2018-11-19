@@ -21,15 +21,14 @@ import java.util.logging.Logger;
 public class Login extends javax.swing.JFrame {
 
     private Socket client;
-    private DataOutputStream dos;
-    private DataInputStream dis;
-    private String str;
+    FirstWindowInterface FWI;
     
     private boolean isLogin = false;
     /**
      * Creates new form Login
      */
     public Login() {
+        FWI = new FirstWindow();
         initComponents();
     }
     
@@ -127,27 +126,12 @@ public class Login extends javax.swing.JFrame {
           
         try {
             client = new Socket("localhost",1234);
-            dis = new DataInputStream(client.getInputStream());
-            dos = new DataOutputStream(client.getOutputStream());
-                
-                dos.writeUTF("check");
-                dos.flush();
-                
-                str = jTextField2.getText();
-                System.out.println(str);
-                dos.writeUTF(str);
-                dos.flush();
-                str = jPasswordField1.getText();
-                System.out.println(str);
-                dos.writeUTF(str);
-                dos.flush();
-                
-                isLogin = dis.readBoolean();
-                System.out.println(isLogin);
-                if (isLogin) 
-                    jTextField1.setText("Password is correct");
-                else 
-                     jTextField1.setText("Password is not correct");
+            isLogin = FWI.Authorization(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(client.getInputStream()),new DataOutputStream(client.getOutputStream()));
+            System.out.println(isLogin);
+            if (isLogin) 
+                jTextField1.setText("Password is correct");
+            else 
+                 jTextField1.setText("Password is not correct");
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -168,27 +152,12 @@ public class Login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             client = new Socket("localhost",1234);
-            dis = new DataInputStream(client.getInputStream());
-            dos = new DataOutputStream(client.getOutputStream());
-                
-                dos.writeUTF("registrate");
-                dos.flush();
-                
-                str = jTextField2.getText();
-                System.out.println(str);
-                dos.writeUTF(str);
-                dos.flush();
-                str = jPasswordField1.getText();
-                System.out.println(str);
-                dos.writeUTF(str);
-                dos.flush();
-                
-                isLogin = dis.readBoolean();
-                System.out.println(isLogin);
-                if (isLogin) 
-                    jTextField1.setText("Registration successful");
-                else 
-                     jTextField1.setText("Try Later");
+            isLogin = FWI.Registration(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(client.getInputStream()), new DataOutputStream(client.getOutputStream()));
+            System.out.println(isLogin);
+            if (isLogin) 
+                jTextField1.setText("Registration successful");
+            else 
+                 jTextField1.setText("Try Later");
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -241,4 +210,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
 }
