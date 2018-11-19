@@ -15,7 +15,7 @@ import java.util.Hashtable;
  *
  * @author Umlore
  */
-public class HashTable {
+public class HashTable implements HashTableInterface {
     
     private Hashtable users;
     
@@ -67,6 +67,7 @@ public class HashTable {
         users = OpenHT();
     }    
     
+    @Override
     public boolean Registration( String new_login, String new_pass) throws IOException {
         users.put(new_login, new_pass);
         SaveHT();

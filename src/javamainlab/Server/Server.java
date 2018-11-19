@@ -36,7 +36,7 @@ public class Server  extends Thread {
     private DataOutputStream dos;
     private String Login, pass , operation;
     
-    HashTable users;
+    HashTableInterface users;
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
