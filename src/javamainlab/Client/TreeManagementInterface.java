@@ -10,10 +10,7 @@ package javamainlab.Client;
  * @author Umlore
  */
 public interface TreeManagementInterface {
-    
-    // вынести отдельно
-    // + наблюдатель
-    
+        
     void SetSpeed(int speed);
     
     void DeleteBranch(Object obj);

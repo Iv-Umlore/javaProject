@@ -44,7 +44,7 @@ public class Server extends Thread {
         try {
             while (true) {
                 socket = ss.accept();
-                dis = new DataInputStream(socket.getInputStream());
+                dis = new DataInputStream(socket.getInputStream()); // уходит в speaker
                 dos = new DataOutputStream(socket.getOutputStream());
                 
                 operation = dis.readUTF();

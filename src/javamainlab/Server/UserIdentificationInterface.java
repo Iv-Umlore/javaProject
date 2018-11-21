@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  * @author Umlore
  */
-public interface UserIdentificationInterface { // название
+public interface UserIdentificationInterface {
     
     boolean Registration( String new_login, String new_pass) throws IOException;
     

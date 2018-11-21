@@ -1,12 +1,19 @@
-Repositiries for Java Lab
+﻿Repositiries for Java Lab
 
 Interface Interaction:
 
-![picture](Scheme.jpg)
+![picture](Picture/Scheme.jpg)
 
 Server device:
 
-![picture](Sсheme2.jpg)
+![picture](Picture/Sсheme2.jpg)
 
+UML диаграмма классов:
 
-![picture](pict.jpg)
+![schemeP1](Picture/part1.png)
+
+![schemeP2](Picture/part2.png)
+
+Черновик:
+
+![picture](Picture/pict.jpg)
