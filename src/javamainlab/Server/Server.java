@@ -7,16 +7,11 @@ package javamainlab.Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javamainlab.Server.HashTable;
 // Возможный выход во время завершения работы сервера. Оставим на будущее
 
 
@@ -36,11 +31,11 @@ public class Server extends Thread {
     private DataOutputStream dos;
     private String Login, pass , operation;
     
-    HashTableInterface users;
+    UserIdentificationInterface users;
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
-        users = new HashTable();
+        users = new UserIdentification();
     }
     
     @Override
@@ -84,9 +79,4 @@ public class Server extends Thread {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private HashTable HashTable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

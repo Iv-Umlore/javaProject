@@ -5,7 +5,6 @@
  */
 package javamainlab.Server;
 
-import java.util.ArrayList;
 import static javamainlab.Server.pixel.air;
 import static javamainlab.Server.pixel.bark;
 import static javamainlab.Server.pixel.leaves;
@@ -34,6 +33,11 @@ public class Tree implements TreeInterface{
     @Override
     public void SetTree(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object GetTree() {
+        return colorPixel;        
     }
     
     

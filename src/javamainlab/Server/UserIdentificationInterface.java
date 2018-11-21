@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  * @author Umlore
  */
-public interface HashTableInterface { // название
+public interface UserIdentificationInterface { // название
     
     boolean Registration( String new_login, String new_pass) throws IOException;
     

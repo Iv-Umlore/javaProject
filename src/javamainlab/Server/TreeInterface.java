@@ -12,10 +12,10 @@ enum pixel {leaves, bark , trunk , air}; // листья, кора, ствол, 
  * @author Umlore
  */
 public interface TreeInterface {
-        
+     
     void SaveTree();
     
     void SetTree(Object obj /* скорее всего это будет массив изменений дерева */);
     
-    // получить дерево
+    Object GetTree();
 }

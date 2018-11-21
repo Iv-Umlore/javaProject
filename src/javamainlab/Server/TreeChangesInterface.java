@@ -10,10 +10,12 @@ package javamainlab.Server;
  * @author Umlore
  */
 public interface TreeChangesInterface {
-    
+        
     void GrowthStep(); // 1 такт роста
     
     void SaveChange(); // сохраняем изменения, как в git
     
     void DestroyBranch(); // Уничтожить ветку
+    
+    // get change
 }

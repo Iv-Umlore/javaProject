@@ -15,7 +15,7 @@ import java.util.Hashtable;
  *
  * @author Umlore
  */
-public class HashTable implements HashTableInterface {
+public class UserIdentification implements UserIdentificationInterface {
     
     private Hashtable users;
     
@@ -63,7 +63,7 @@ public class HashTable implements HashTableInterface {
         FW.close();
     }
     
-    public HashTable() throws IOException{
+    public UserIdentification() throws IOException{
         users = OpenHT();
     }    
     

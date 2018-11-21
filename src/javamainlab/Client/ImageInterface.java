@@ -9,13 +9,10 @@ package javamainlab.Client;
  *
  * @author Umlore
  */
-public interface TreeManagementInterface {
-    
-    // вынести отдельно
+public interface ImageInterface {
     // + наблюдатель
+     void Refresh(/*здесь могла быть ваше изображение*/);
     
-    void SetSpeed(int speed);
-    
-    void DeleteBranch(Object obj);
-    
+     void PaintTree(Object tree);
+     
 }

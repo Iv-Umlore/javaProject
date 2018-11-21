@@ -9,20 +9,15 @@ package javamainlab.Client;
  *
  * @author Umlore
  */
-public class TreeManagement implements TreeManagementInterface {
+public class Image implements ImageInterface {    
 
     @Override
-    public void SetSpeed(int speed) {
+    public void Refresh() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void DeleteBranch(Object obj) {
+    public void PaintTree(Object tree) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    void /*object a.k. tree*/ GetCurrentTree(){
-        
-    }
-    
 }
