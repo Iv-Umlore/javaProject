@@ -10,9 +10,9 @@ Server device:
 
 UML диаграмма классов:
 
-![schemeP1](Picture/part1.png)
+![schemeP1](Picture/Part1.PNG)
 
-![schemeP2](Picture/part2.png)
+![schemeP2](Picture/Part2.PNG)
 
 Черновик:
 
