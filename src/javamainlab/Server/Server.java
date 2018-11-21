@@ -28,7 +28,7 @@ import javamainlab.Server.HashTable;
     // Класс для перехвата новых подключаемых клиентов и для 
     // предоставления каждому собственного потока
 
-public class Server  extends Thread {
+public class Server extends Thread {
     
     private ServerSocket ss;
     private Socket socket;

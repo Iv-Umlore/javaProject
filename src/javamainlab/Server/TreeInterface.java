@@ -16,4 +16,6 @@ public interface TreeInterface {
     void SaveTree();
     
     void SetTree(Object obj /* скорее всего это будет массив изменений дерева */);
+    
+    // получить дерево
 }

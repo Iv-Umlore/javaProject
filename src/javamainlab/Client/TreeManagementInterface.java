@@ -11,9 +11,13 @@ package javamainlab.Client;
  */
 public interface TreeManagementInterface {
     
-    void Refresh(/*здесь могла быть ваше изображение*/);
+    void Refresh(/*здесь могла быть ваше изображение*/); // вынести отдельно
+    // + наблюдатель
     
     void SetSpeed(int speed);
     
     void DeleteBranch(Object obj);
+    
+    // void PaintTree
+    // get current tree
 }

@@ -47,11 +47,11 @@ public class FirstWindow implements FirstWindowInterface {
         
                 dos.flush();
                 
-                System.out.println(Login);
+                // System.out.println(Login);
                 dos.writeUTF(Login);
                 dos.flush();
                 
-                System.out.println(pass);
+                // System.out.println(pass);
                 dos.writeUTF(pass);
                 dos.flush();
         
