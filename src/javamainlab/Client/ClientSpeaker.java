@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class ClientSpeaker implements ClientSpeakerInterface {
 
-    private int speed = 1;
+    private int speed;
     private Socket server; 
     private DataInputStream dis;
     private DataOutputStream dos;
@@ -27,14 +27,15 @@ public class ClientSpeaker implements ClientSpeakerInterface {
         server = serv;
         dis = new DataInputStream(server.getInputStream());
         dos = new DataOutputStream(server.getOutputStream());
-        System.out.println("ClientSpeaker is done! ");
+        speed = 1;
+        System.out.println("ClientSpeaker is done! ");        
     }
     
     @Override
-    public void SpeedChange(int newSpeed) {
-        
+    public void SpeedChange(int newSpeed) {  
+        System.out.println("Bams ");   
         if (newSpeed != speed) {    
-            try {
+           /* try {
                 dos.writeUTF("speed");
                 dos.flush();
                 dos.write(newSpeed);
@@ -42,7 +43,8 @@ public class ClientSpeaker implements ClientSpeakerInterface {
                 speed = newSpeed;
             } catch (IOException ex) {
                 Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
+           System.out.println("hello");
             }
         }
 

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class ClientGUI extends javax.swing.JFrame {
         
-        ClientSpeakerInterface CSI;
+        ClientSpeaker CSI;
         int speed;
     
     /**
@@ -27,7 +27,6 @@ public class ClientGUI extends javax.swing.JFrame {
      */
     public ClientGUI() {
         initComponents(); 
-        speed = 1;
     }
         
 
@@ -143,23 +142,25 @@ public class ClientGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void x1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1ActionPerformed
-        //CSI.SpeedChange(1);
-        speed = 1;
+        CSI.SpeedChange(1);
+        //speed = 1;
     }//GEN-LAST:event_x1ActionPerformed
 
     private void x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x5ActionPerformed
-        //CSI.SpeedChange(5);
-        speed = 5;
+        CSI.SpeedChange(5);
+        //speed = 5;
     }//GEN-LAST:event_x5ActionPerformed
 
     private void x10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x10ActionPerformed
-        //CSI.SpeedChange(10);
-        speed = 10;
+        CSI.SpeedChange(10);
+        //speed = 10;
     }//GEN-LAST:event_x10ActionPerformed
 
     private void x2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x2ActionPerformed
-        //CSI.SpeedChange(2);
-        speed = 2;
+        System.out.println("Bams"); 
+        CSI.SpeedChange(2);
+        System.out.println("Bams");  
+        //speed = 2;
     }//GEN-LAST:event_x2ActionPerformed
 
     private void DeleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBranchActionPerformed
@@ -196,7 +197,7 @@ public class ClientGUI extends javax.swing.JFrame {
         /* Create and display the form */
         
         CSI = new ClientSpeaker(serv);
-        
+        CSI.SpeedChange(1);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                     new ClientGUI().setVisible(true);
