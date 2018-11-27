@@ -9,13 +9,19 @@ package javamainlab.Server;
  *
  * @author Umlore
  */
-public interface TreeChangesInterface {
-        
+public interface  TreeChangesInterface {
+    
+    void ChangeGrowthSpeed(int newSpeed);
+    
     void GrowthStep(); // 1 такт роста
     
     void SaveChange(); // сохраняем изменения, как в git
     
     void DestroyBranch(); // Уничтожить ветку
     
-    // get change
+    int GetChange(); // выдать изменения с момента последнего обращения
+    
+    void StopGrowth();
+    
+    void run();
 }

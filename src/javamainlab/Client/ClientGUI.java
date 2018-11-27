@@ -6,20 +6,30 @@
 
 package javamainlab.Client;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Umlore
  */
 public class ClientGUI extends javax.swing.JFrame {
-
-    int speed = 1;
         
+        ClientSpeakerInterface CSI;
+        int speed;
+    
     /**
      * Creates new form ClientGUI
      */
     public ClientGUI() {
-        initComponents();
+        initComponents(); 
+        speed = 1;
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +42,7 @@ public class ClientGUI extends javax.swing.JFrame {
 
         panel2 = new java.awt.Panel();
         canvas1 = new java.awt.Canvas();
-        jButton1 = new javax.swing.JButton();
+        DeleteBranch = new javax.swing.JButton();
         x1 = new javax.swing.JButton();
         x5 = new javax.swing.JButton();
         x10 = new javax.swing.JButton();
@@ -51,7 +61,12 @@ public class ClientGUI extends javax.swing.JFrame {
             .addGap(0, 240, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Обрезать");
+        DeleteBranch.setText("Обрезать");
+        DeleteBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBranchActionPerformed(evt);
+            }
+        });
 
         x1.setText("x1");
         x1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +106,7 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DeleteBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -111,7 +126,7 @@ public class ClientGUI extends javax.swing.JFrame {
                         .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DeleteBranch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(x1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -128,33 +143,33 @@ public class ClientGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void x1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1ActionPerformed
-        System.out.print(speed + " ");
+        //CSI.SpeedChange(1);
         speed = 1;
-        System.out.println(speed);
     }//GEN-LAST:event_x1ActionPerformed
 
     private void x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x5ActionPerformed
-        System.out.print(speed + " ");
+        //CSI.SpeedChange(5);
         speed = 5;
-        System.out.println(speed);
     }//GEN-LAST:event_x5ActionPerformed
 
     private void x10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x10ActionPerformed
-        System.out.print(speed + " ");
+        //CSI.SpeedChange(10);
         speed = 10;
-        System.out.println(speed);
     }//GEN-LAST:event_x10ActionPerformed
 
     private void x2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x2ActionPerformed
-        System.out.print(speed + " ");
+        //CSI.SpeedChange(2);
         speed = 2;
-        System.out.println(speed);
     }//GEN-LAST:event_x2ActionPerformed
+
+    private void DeleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBranchActionPerformed
+        CSI.DestroyBranch();
+    }//GEN-LAST:event_DeleteBranchActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public void main(String args[]) throws InterruptedException {
+    public void main(Socket serv) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -180,16 +195,18 @@ public class ClientGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         
+        CSI = new ClientSpeaker(serv);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientGUI().setVisible(true);
+                    new ClientGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteBranch;
     private java.awt.Canvas canvas1;
-    private javax.swing.JButton jButton1;
     private java.awt.Panel panel2;
     private javax.swing.JButton x1;
     private javax.swing.JButton x10;

@@ -31,16 +31,20 @@ public class Server extends Thread {
     private DataOutputStream dos;
     private String Login, pass , operation;
     
+    boolean IsLogin;
+    
     UserIdentificationInterface users;
+    
+    Speaker speak;
     
     public Server(ServerSocket SeSo) throws IOException{
         ss = SeSo;
         users = new UserIdentification();
+        IsLogin = false;
     }
     
     @Override
     public void run(){
-        //System.out.println(this.getId());
         try {
             while (true) {
                 socket = ss.accept();
@@ -51,11 +55,17 @@ public class Server extends Thread {
                 if (operation.equals("check")) {
                     Login = dis.readUTF();
                     pass = dis.readUTF();
-
-                    System.out.println(Login + " " + pass);
-
-                    dos.writeBoolean(users.CheckLogPas(Login, pass));
+                    
+                    IsLogin = users.CheckLogPas(Login, pass);
+                    
+                    dos.writeBoolean(IsLogin);
                     dos.flush();
+                    
+                    if (IsLogin) {           // передаём общение другому классу
+                        speak = new Speaker(socket,Login);
+                        speak.run();
+                    }
+                    IsLogin = false;
                 }
                 
                 if (operation.equals("registrate")) {

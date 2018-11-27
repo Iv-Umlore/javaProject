@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class LoginGUI extends javax.swing.JFrame {
 
-    private Socket client;
+    private Socket serv;
     FirstWindowInterface FWI;
     
     private boolean isLogin = false;
@@ -125,8 +125,8 @@ public class LoginGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           
         try {
-            client = new Socket("localhost",1234);
-            isLogin = FWI.Authorization(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(client.getInputStream()),new DataOutputStream(client.getOutputStream()));
+            serv = new Socket("localhost",1234);
+            isLogin = FWI.Authorization(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(serv.getInputStream()),new DataOutputStream(serv.getOutputStream()));
             System.out.println(isLogin);
             if (isLogin) 
                 jTextField1.setText("Password is correct");
@@ -138,10 +138,9 @@ public class LoginGUI extends javax.swing.JFrame {
         
         if (isLogin) {
             ClientGUI CGU = new ClientGUI();
-            String[] args = null;
             try {
-                CGU.main(args);
-            } catch (InterruptedException ex) {
+                CGU.main(serv);
+            } catch (IOException ex) { 
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             dispose();
@@ -151,8 +150,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            client = new Socket("localhost",1234);
-            isLogin = FWI.Registration(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(client.getInputStream()), new DataOutputStream(client.getOutputStream()));
+            serv = new Socket("localhost",1234);
+            isLogin = FWI.Registration(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(serv.getInputStream()), new DataOutputStream(serv.getOutputStream()));
             System.out.println(isLogin);
             if (isLogin) 
                 jTextField1.setText("Registration successful");

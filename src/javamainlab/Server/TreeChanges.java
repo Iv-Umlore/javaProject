@@ -11,8 +11,22 @@ import java.util.Vector;
  *
  * @author Umlore
  */
-public class TreeChanges implements TreeChangesInterface{
-    //Vector change;
+public class TreeChanges extends Thread implements TreeChangesInterface {
+    
+    private boolean IsStarted;
+    private int speed;  // 2000 - x1, 1000 - x2, 400 - x5, 200 - x10;
+    private int HMSteps;
+    public TreeChanges() {
+        speed = 2000;
+        IsStarted = false;
+        HMSteps = 0;
+    }
+    
+    @Override
+    public void ChangeGrowthSpeed(int newSpeed) {
+        speed = newSpeed;
+        System.out.println("I'm change speed!");
+    }
         
     @Override
     public void GrowthStep() {
@@ -29,5 +43,22 @@ public class TreeChanges implements TreeChangesInterface{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    // Vector GetChange();
+    public int GetChange(){
+        return HMSteps;
+    }
+
+    @Override
+    public void StopGrowth(){       // Остановить рост
+        IsStarted = false;
+    }
+    
+    @Override
+    public void run(){
+        System.out.println("Growth is started!");
+        IsStarted = true;
+        while (IsStarted){
+            HMSteps++;
+        }
+    }
+    
 }
