@@ -6,6 +6,8 @@
 package javamainlab.Server;
 
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +18,7 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     private boolean IsStarted;
     private int speed;  // 2000 - x1, 1000 - x2, 400 - x5, 200 - x10;
     private int HMSteps;
+    
     public TreeChanges() {
         speed = 2000;
         IsStarted = false;
@@ -24,13 +27,13 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     
     @Override
     public void ChangeGrowthSpeed(int newSpeed) {
-        speed = newSpeed;
+        speed = 2000/newSpeed;
         System.out.println("I'm change speed!");
     }
         
     @Override
     public void GrowthStep() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HMSteps++;
     }
 
     @Override
@@ -57,7 +60,13 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         System.out.println("Growth is started!");
         IsStarted = true;
         while (IsStarted){
-            HMSteps++;
+            GrowthStep();
+            System.out.println("Step");
+            try {
+                sleep(speed);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TreeChanges.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     

@@ -138,8 +138,7 @@ public class LoginGUI extends javax.swing.JFrame {
         
         if (isLogin) {
             try {
-                ClientGUI CGU = new ClientGUI(serv);                
-                //CGU.main(serv);       
+                ClientGUI CGU = new ClientGUI(serv);       
                 CGU.setVisible(true);
                 dispose();
             } catch (IOException ex) { 

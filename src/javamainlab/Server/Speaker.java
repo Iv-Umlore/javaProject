@@ -37,9 +37,11 @@ public class Speaker extends Thread{
     @Override
     public void run(){
         
-        System.out.print("User " + userName + " is login!");
+        System.out.println("User " + userName + " is login!");
+        System.out.println(dis);
+        System.out.println(dos);
         TreeCh.run();
-        while (true) {
+        while (sock.isConnected()) {
         try {
             command = dis.readUTF();
             
