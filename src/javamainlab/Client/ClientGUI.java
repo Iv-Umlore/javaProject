@@ -19,13 +19,14 @@ import java.util.logging.Logger;
  */
 public class ClientGUI extends javax.swing.JFrame {
         
-        ClientSpeaker CSI;
+        ClientSpeakerInterface CSI;
         int speed;
     
     /**
      * Creates new form ClientGUI
      */
-    public ClientGUI() {
+    public ClientGUI(Socket serv) throws IOException {
+        CSI = new ClientSpeaker(serv);
         initComponents(); 
     }
         
@@ -158,8 +159,7 @@ public class ClientGUI extends javax.swing.JFrame {
 
     private void x2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x2ActionPerformed
         System.out.println("Bams"); 
-        CSI.SpeedChange(2);
-        System.out.println("Bams");  
+        CSI.SpeedChange(2); 
         //speed = 2;
     }//GEN-LAST:event_x2ActionPerformed
 
@@ -196,11 +196,13 @@ public class ClientGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         
-        CSI = new ClientSpeaker(serv);
-        CSI.SpeedChange(1);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                    new ClientGUI().setVisible(true);
+                try {
+                    new ClientGUI(serv).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

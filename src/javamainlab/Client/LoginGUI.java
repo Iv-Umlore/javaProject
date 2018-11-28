@@ -137,13 +137,14 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         
         if (isLogin) {
-            ClientGUI CGU = new ClientGUI();
             try {
-                CGU.main(serv);
+                ClientGUI CGU = new ClientGUI(serv);                
+                //CGU.main(serv);       
+                CGU.setVisible(true);
+                dispose();
             } catch (IOException ex) { 
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dispose();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

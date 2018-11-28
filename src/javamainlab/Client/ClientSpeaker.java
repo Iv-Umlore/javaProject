@@ -22,12 +22,14 @@ public class ClientSpeaker implements ClientSpeakerInterface {
     private Socket server; 
     private DataInputStream dis;
     private DataOutputStream dos;
+    String command;
     
     ClientSpeaker(Socket serv) throws IOException{
         server = serv;
         dis = new DataInputStream(server.getInputStream());
         dos = new DataOutputStream(server.getOutputStream());
         speed = 1;
+        command = "";
         System.out.println("ClientSpeaker is done! ");        
     }
     
@@ -35,23 +37,26 @@ public class ClientSpeaker implements ClientSpeakerInterface {
     public void SpeedChange(int newSpeed) {  
         System.out.println("Bams ");   
         if (newSpeed != speed) {    
-           /* try {
-                dos.writeUTF("speed");
+            try {
+                command = "speed";
+                dos.writeUTF(command);
                 dos.flush();
                 dos.write(newSpeed);
                 dos.flush();
                 speed = newSpeed;
             } catch (IOException ex) {
                 Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            }
            System.out.println("hello");
             }
+        System.out.println("Bams");
         }
 
     @Override
     public void DestroyBranch() {
         try {
-            dos.writeUTF("destroy");
+            command = "destroy";
+            dos.writeUTF(command);
             dos.flush();
         } catch (IOException ex) {
             Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
