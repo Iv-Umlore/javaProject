@@ -9,12 +9,16 @@ package javamainlab.Client;
  *
  * @author Umlore
  */
-public interface ImageInterface {
-    // + наблюдатель
-     public void Refresh(/*здесь могла быть ваше изображение*/);
+public class ImageHandler extends Thread{
     
-     public void PaintTree(Object tree);
-     
-     public int[][] GetImage();
-     
+    ImageInterface image;
+    
+    public ImageHandler(){
+        image = new Image();
+    }
+    
+    @Override
+    public void run() {
+        
+    }
 }

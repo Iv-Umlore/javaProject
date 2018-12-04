@@ -10,7 +10,19 @@ package javamainlab.Client;
  * @author Umlore
  */
 public class Image implements ImageInterface {    
-
+    
+    int[][] arr;
+    
+    Image() {
+       arr = new int[240][]; 
+       for (int i = 0; i < 240; i++)
+           arr[i] = new int[240];
+    }
+    
+    public int[][] ReturnArray() {
+        return arr;
+    }
+    
     @Override
     public void Refresh() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -19,5 +31,10 @@ public class Image implements ImageInterface {
     @Override
     public void PaintTree(Object tree) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int[][] GetImage() {
+        return arr;
     }
 }

@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 public class ClientGUI extends javax.swing.JFrame {
         
         ClientSpeakerInterface CSI;
+        ImageHandler Image;
         int speed;
     
     /**
@@ -27,6 +28,7 @@ public class ClientGUI extends javax.swing.JFrame {
      */
     public ClientGUI(Socket serv) throws IOException {
         CSI = new ClientSpeaker(serv);
+        Image = new ImageHandler();
         initComponents(); 
     }
         
