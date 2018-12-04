@@ -10,7 +10,7 @@ package javamainlab.Server;
  * @author Umlore
  */
 
-enum GrowthDirection {up, left, right};
+enum GrowthDirection { left, right, up};
 
 
 
@@ -22,13 +22,15 @@ public interface BranchInterface {
     
     public void DeleteThisBranch();
         
-    public BranchInterface GetParrentBranch();
+    public BranchInterface GetParentBranch();
     
     public BranchInterface GetClildFirstBranch();
     
     public BranchInterface GetClildSecondBranch();
     
     public BranchInterface ReturnThisBranch();
+    
+    public void PlusPlusBranch();
     
     // листья потом сделаем
 }
