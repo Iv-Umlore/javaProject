@@ -32,5 +32,7 @@ public interface BranchInterface {
     
     public void PlusPlusBranch();
     
+    public void Growth();
+    
     // листья потом сделаем
 }

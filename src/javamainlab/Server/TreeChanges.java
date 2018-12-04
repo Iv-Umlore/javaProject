@@ -19,10 +19,14 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     private int speed;  // 2000 - x1, 1000 - x2, 400 - x5, 200 - x10;
     private int HMSteps;
     
+    private TreeInterface tree;
+    
     public TreeChanges() {
         speed = 2000;
         IsStarted = false;
         HMSteps = 0;
+        
+        tree = new Tree();
     }
     
     @Override
@@ -33,6 +37,7 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         
     @Override
     public void GrowthStep() {
+        tree.GetTree().Growth();
         HMSteps++;
     }
 

@@ -142,6 +142,19 @@ public class Branch implements BranchInterface{
         }
         return up;
     }
+
+    @Override
+    public void Growth() {
+        
+        if (ClildFirstBranch!= null) ClildFirstBranch.Growth();
+        if (ClildSecondBranch != null) ClildSecondBranch.Growth();
+        
+        int numb = rand.nextInt(100);
+        if (Direct == up) 
+            if (numb > 59) GenerateChildBranch();
+        if ((Direct == left) || (Direct == right))
+            if (numb < 12) GenerateChildBranch();
+    }
     
      
     

@@ -5,24 +5,21 @@
  */
 package javamainlab.Server;
 
-import static javamainlab.Server.pixel.air;
-import static javamainlab.Server.pixel.bark;
-import static javamainlab.Server.pixel.leaves;
-import static javamainlab.Server.pixel.trunk;
+import static javamainlab.Server.GrowthDirection.up;
 
 /**
  *
  * @author Umlore
  */
 public class Tree implements TreeInterface{
-    pixel[][] colorPixel;
+    
+    private BranchInterface MainBranch;
+    private BranchInterface CurrentBranch;
+    
     
     public Tree(){
-        colorPixel = new pixel[240][240];
-        for (int i = 0; i < 240 ; i++)
-            for (int j = 0; j < 240 ; j++)
-                colorPixel[i][j] = air;
-        /* creating default tree */
+        MainBranch = new Branch(up,120,240,null);
+        CurrentBranch = MainBranch;
     }
 
     @Override
@@ -36,8 +33,8 @@ public class Tree implements TreeInterface{
     }
 
     @Override
-    public Object GetTree() {
-        return colorPixel;        
+    public BranchInterface GetTree() {
+        return MainBranch;      
     }
     
     

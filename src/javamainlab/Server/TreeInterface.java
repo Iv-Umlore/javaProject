@@ -5,8 +5,6 @@
  */
 package javamainlab.Server;
 
-enum pixel {leaves, bark , trunk , air}; // листья, кора, ствол, воздух
-
 /**
  *
  * @author Umlore
@@ -17,5 +15,5 @@ public interface TreeInterface {
     
     void SetTree(Object obj /* скорее всего это будет массив изменений дерева */);
     
-    Object GetTree();
+    BranchInterface GetTree();
 }
