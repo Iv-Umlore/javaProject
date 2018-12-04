@@ -34,7 +34,7 @@ public class Server extends Thread {
     boolean IsLogin;
     
     UserIdentificationInterface users;
-    
+          
     Speaker speak;
     
     public Server(ServerSocket SeSo) throws IOException{
@@ -48,7 +48,7 @@ public class Server extends Thread {
         try {
             while (true) {
                 socket = ss.accept();
-                dis = new DataInputStream(socket.getInputStream()); // уходит в speaker
+                dis = new DataInputStream(socket.getInputStream());
                 dos = new DataOutputStream(socket.getOutputStream());
                 
                 operation = dis.readUTF();
@@ -73,8 +73,12 @@ public class Server extends Thread {
                     Login = dis.readUTF();
                     pass = dis.readUTF();                  
                     
-                        dos.writeBoolean(users.Registration(Login, pass));
-                        dos.flush();
+                    dos.writeBoolean(users.Registration(Login, pass));
+                    dos.flush();
+                    
+                    TreeChangesInterface TCI = new TreeChanges();
+                    TCI.SaveTree();
+                    
                     } catch (IOException ex) {
                         try {
                             dos.writeBoolean(false);

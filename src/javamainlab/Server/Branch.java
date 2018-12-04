@@ -30,9 +30,13 @@ public class Branch implements BranchInterface{
     private BranchInterface ClildFirstBranch;
     private BranchInterface ClildSecondBranch;
 
+    private boolean IsGrowth;
+    
     private Random rand;
         
     public Branch(GrowthDirection _thisBranch, int X, int Y, BranchInterface Parent) {
+        
+        IsGrowth = false;
         
         ParentBranch = Parent;
         ClildFirstBranch = null;
@@ -79,7 +83,8 @@ public class Branch implements BranchInterface{
                 PlusPlusBranch();
             }
             if (numberHerBranches == 1) { 
-                ClildSecondBranch  = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                if (ClildFirstBranch == null) ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                else ClildSecondBranch  = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
                 PlusPlusBranch();                
             }
         }
@@ -145,15 +150,30 @@ public class Branch implements BranchInterface{
 
     @Override
     public void Growth() {
-        
+        int numb = rand.nextInt(100);
+            
         if (ClildFirstBranch!= null) ClildFirstBranch.Growth();
         if (ClildSecondBranch != null) ClildSecondBranch.Growth();
-        
-        int numb = rand.nextInt(100);
-        if (Direct == up) 
-            if (numb > 59) GenerateChildBranch();
-        if ((Direct == left) || (Direct == right))
-            if (numb < 12) GenerateChildBranch();
+
+        if ((numberHerBranches < 2) && (numb > 74)) {        
+            numb = rand.nextInt(100);
+            if (Direct == up) {
+                if (numb > 59) GenerateChildBranch();
+                IsGrowth = true;
+            }
+            if ((Direct == left) || (Direct == right))
+                if (numb < 12) {
+                    GenerateChildBranch();
+                    IsGrowth = true;
+                }
+        }
+    }
+
+    @Override
+    public boolean IsGrowth() {
+        boolean result = IsGrowth;
+        IsGrowth = false;   // При данном запросе обнуляем статус изменений
+        return result;
     }
     
      

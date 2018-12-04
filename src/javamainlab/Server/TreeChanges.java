@@ -42,7 +42,7 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     }
 
     @Override
-    public void SaveChange() {
+    public void SaveTree() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

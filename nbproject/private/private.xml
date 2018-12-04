@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageHandler.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/BranchInterface.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/Image.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeInterface.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/LoginGUI.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Speaker.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeChanges.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientGUI.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Server.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Tree.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeChangesInterface.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Branch.java</file>
         </group>
     </open-files>

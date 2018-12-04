@@ -15,7 +15,7 @@ public interface  TreeChangesInterface {
     
     void GrowthStep(); // 1 такт роста
     
-    void SaveChange(); // сохраняем изменения, как в git
+    void SaveTree(); // сохраняем изменения, как в git
     
     void DestroyBranch(); // Уничтожить ветку
     

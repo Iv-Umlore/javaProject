@@ -30,6 +30,8 @@ public interface BranchInterface {
     
     public BranchInterface ReturnThisBranch();
     
+    public boolean IsGrowth();
+    
     public void PlusPlusBranch();
     
     public void Growth();
