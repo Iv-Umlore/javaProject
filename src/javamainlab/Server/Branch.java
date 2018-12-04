@@ -20,11 +20,11 @@ public class Branch implements BranchInterface{
     private int numberHerBranches;
 
     private Random rand;
-    
+        
     public Branch(GrowthDirection _thisBranch, int X, int Y) {
         
         rand = new Random();
-        
+                
         StartX = X;
         StartY = Y;
         Direct = _thisBranch;
@@ -32,26 +32,28 @@ public class Branch implements BranchInterface{
         width = 1;
         numberAllBranch = 0;
         numberHerBranches = 0;
-        
-        switch (Direct) {
-            case up : {
-                parametrT = rand.nextDouble() % (PI/3) + (PI/3); 
-                // угол 60 - 120 градусов
-                break;
-            }
-            case right : {
-                parametrT = rand.nextDouble() % (PI/3);
-                // угол 0 - 60 градусов
-                break;
-            }
-            case left : {
-                parametrT = rand.nextDouble() % (PI/3) + 2*(PI/3);
-                // угол 120 - 180 градусов
-                break;
+        if (parametrT < 0) {
+            switch (Direct) {
+                case up : {
+                    parametrT = rand.nextDouble() % (PI/3) + (PI/3); 
+                    // угол 60 - 120 градусов
+                    break;
+                }
+                case right : {
+                    parametrT = rand.nextDouble() % (PI/3);
+                    // угол 0 - 60 градусов
+                    break;
+                }
+                case left : {
+                    parametrT = rand.nextDouble() % (PI/3) + 2*(PI/3);
+                    // угол 120 - 180 градусов
+                    break;
+                }
             }
         }
         
     }
+        
     
     @Override
     public void GenerateChildBranch() {
