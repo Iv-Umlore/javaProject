@@ -36,5 +36,9 @@ public interface BranchInterface {
     
     public void Growth();
     
+    public String ToString();
+    
+    public int ReturnNumberAll();
+    
     // листья потом сделаем
 }
