@@ -23,8 +23,10 @@ public class Branch implements BranchInterface{
     private final int FinalX, FinalY;
     private int length, width;
     private double parametrT;
-    private int numberAllBranch;
+    public int numberAllBranch;
     private int numberHerBranches;
+    
+    private String thisBranch;
     
     private BranchInterface ParentBranch;    
     private BranchInterface ClildFirstBranch;
@@ -33,7 +35,8 @@ public class Branch implements BranchInterface{
     private boolean IsGrowth;
     
     private Random rand;
-        
+    
+    
     public Branch(GrowthDirection _thisBranch, int X, int Y, BranchInterface Parent) {
         
         IsGrowth = false;
@@ -175,7 +178,26 @@ public class Branch implements BranchInterface{
         IsGrowth = false;   // При данном запросе обнуляем статус изменений
         return result;
     }
+
+    @Override
+    public String ToString() {
+        
+        thisBranch = "";
+        
+        thisBranch = String.valueOf(Direct) + " " + String.valueOf(StartX) +
+                String.valueOf(StartY) + " " + String.valueOf(FinalX) +
+                String.valueOf(FinalY) + " " + String.valueOf(width) +
+                String.valueOf(numberHerBranches);
+        
+        if (ClildFirstBranch != null) thisBranch = thisBranch + ClildFirstBranch.ToString();
+        if (ClildSecondBranch != null) thisBranch = thisBranch + ClildSecondBranch.ToString();
+        
+        return thisBranch;
+    }
     
-     
+    @Override
+    public int ReturnNumberAll() {
+        return numberAllBranch;
+    }
     
 }

@@ -16,4 +16,6 @@ public interface TreeInterface {
     void SetTree(Object obj /* скорее всего это будет массив изменений дерева */);
     
     BranchInterface GetTree();
+    
+    String ToString();
 }

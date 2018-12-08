@@ -16,6 +16,7 @@ public class Tree implements TreeInterface{
     private BranchInterface MainBranch;
     private BranchInterface CurrentBranch;
     
+    private String thisTree;
     
     public Tree(){
         MainBranch = new Branch(up,120,240,null);
@@ -35,6 +36,17 @@ public class Tree implements TreeInterface{
     @Override
     public BranchInterface GetTree() {
         return MainBranch;      
+    }
+
+    @Override
+    public String ToString() {
+        thisTree = "";
+        
+        thisTree = String.valueOf(MainBranch.ReturnNumberAll()) + " ";
+        
+        thisTree += MainBranch.ToString();
+        
+        return thisTree;
     }
     
     
