@@ -63,7 +63,7 @@ public class Server extends Thread {
                     
                     if (IsLogin) {           // передаём общение другому классу
                         speak = new Speaker(socket,Login);
-                        speak.run();
+                        speak.start();
                     }
                     IsLogin = false;
                 }

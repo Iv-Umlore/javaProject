@@ -42,9 +42,11 @@ public class Tree implements TreeInterface{
     public String ToString() {
         thisTree = "";
         
-        thisTree = String.valueOf(MainBranch.ReturnNumberAll()) + " ";
+        thisTree = String.valueOf(MainBranch.ReturnNumberAll());
         
         thisTree += MainBranch.ToString();
+        
+        System.out.println("Дерево закончилось!");
         
         return thisTree;
     }

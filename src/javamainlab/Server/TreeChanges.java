@@ -51,8 +51,8 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public int GetChange(){
-        return HMSteps;
+    public String GetChange(){
+        return tree.ToString();
     }
 
     @Override
@@ -60,13 +60,14 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         IsStarted = false;
     }
     
+    
     @Override
     public void run(){
         System.out.println("Growth is started!");
         IsStarted = true;
         while (IsStarted){
             GrowthStep();
-            System.out.println("Step");
+            System.out.println(tree.ToString());
             try {
                 sleep(speed);
             } catch (InterruptedException ex) {

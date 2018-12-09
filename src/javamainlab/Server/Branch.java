@@ -52,7 +52,7 @@ public class Branch implements BranchInterface{
         Direct = _thisBranch;
         length = rand.nextInt(5) + 4;
         width = 1;
-        numberAllBranch = 0;
+        numberAllBranch = 1;
         numberHerBranches = 0;
             switch (Direct) {
                 case up : {
@@ -72,24 +72,27 @@ public class Branch implements BranchInterface{
                 }
             }
         
-        FinalX = StartX + (int)(round(cos(parametrT)));
-        FinalY = StartY + (int)(round(sin(parametrT)));
+        FinalX = StartX - (int)round(length * cos(parametrT));
+        FinalY = StartY - (int)round(length * sin(parametrT));
     }
         
     
     @Override
     public void GenerateChildBranch() {
         if (numberHerBranches < 2){
-            numberHerBranches++;
-            if (numberHerBranches == 0) { 
-                ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
-                PlusPlusBranch();
-            }
+            
             if (numberHerBranches == 1) { 
                 if (ClildFirstBranch == null) ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
                 else ClildSecondBranch  = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
-                PlusPlusBranch();                
+                PlusPlusBranch();   
+                numberHerBranches++;             
             }
+            
+            if (numberHerBranches == 0) { 
+                ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                PlusPlusBranch();                
+                numberHerBranches++;
+            }            
         }
     }
 
@@ -129,12 +132,15 @@ public class Branch implements BranchInterface{
     }
     
     private GrowthDirection GenerateDirection(GrowthDirection that){
+        
+        rand = new Random();
+        
         int numb = rand.nextInt(100);
         switch (that) {
             case up : {
-                    if ((numb > 14) && (numb < 84)) return up;
-                    if (numb <=14) return left;
-                    if (numb >=84) return right;
+                    if ((numb > 15) && (numb < 85)) return up;
+                    if (numb <=15) return left;
+                    if (numb >=85) return right;
                     break;
                 }
                 case right : {
@@ -153,15 +159,26 @@ public class Branch implements BranchInterface{
 
     @Override
     public void Growth() {
-        int numb = rand.nextInt(100);
+        
+        rand = new Random();              
+                
+        if (ClildFirstBranch!= null) {
+            ClildFirstBranch.Growth();
+        }
+        if (ClildSecondBranch != null) {
+            ClildSecondBranch.Growth();
+        } 
+          
+        if (numberHerBranches < 2) {
             
-        if (ClildFirstBranch!= null) ClildFirstBranch.Growth();
-        if (ClildSecondBranch != null) ClildSecondBranch.Growth();
-
-        if ((numberHerBranches < 2) && (numb > 74)) {        
+        }
+            int numb = rand.nextInt(100);
+            
+            if (numb > 87) {
+                
             numb = rand.nextInt(100);
             if (Direct == up) {
-                if (numb > 59) GenerateChildBranch();
+                if (numb > 55) GenerateChildBranch();
                 IsGrowth = true;
             }
             if ((Direct == left) || (Direct == right))
@@ -184,13 +201,17 @@ public class Branch implements BranchInterface{
         
         thisBranch = "";
         
-        thisBranch = String.valueOf(Direct) + " " + String.valueOf(StartX) +
-                String.valueOf(StartY) + " " + String.valueOf(FinalX) +
-                String.valueOf(FinalY) + " " + String.valueOf(width) +
-                String.valueOf(numberHerBranches);
+        thisBranch = " " + String.valueOf(Direct) + " " + String.valueOf(StartX) + " " +
+                String.valueOf(StartY) + " " + String.valueOf(FinalX) + " " +
+                String.valueOf(FinalY) + " " + String.valueOf(width) + " " +
+                String.valueOf(numberHerBranches) + '\n';
         
-        if (ClildFirstBranch != null) thisBranch = thisBranch + ClildFirstBranch.ToString();
-        if (ClildSecondBranch != null) thisBranch = thisBranch + ClildSecondBranch.ToString();
+        if (ClildFirstBranch != null) {
+            thisBranch = thisBranch + ClildFirstBranch.ToString();
+        }
+        if (ClildSecondBranch != null) {
+            thisBranch = thisBranch + ClildSecondBranch.ToString();
+        }
         
         return thisBranch;
     }

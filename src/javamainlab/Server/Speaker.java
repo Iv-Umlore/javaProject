@@ -24,7 +24,7 @@ public class Speaker extends Thread{
     private String userName;
     private String command;
     
-    private TreeChangesInterface TreeCh;
+    private TreeChanges/*Interface*/ TreeCh;
     
     public Speaker (Socket s, String UName) throws IOException{
         sock = s;
@@ -38,10 +38,13 @@ public class Speaker extends Thread{
     public void run(){
         
         System.out.println("User " + userName + " is login!");
-        System.out.println(dis);
-        System.out.println(dos);
-        TreeCh.run();
-        while (sock.isConnected()) {
+        //System.out.println(dis);
+        //System.out.println(dos);
+           
+        
+        
+        TreeCh.start();
+        while (true) {
         try {
             command = dis.readUTF();
             
@@ -53,12 +56,12 @@ public class Speaker extends Thread{
                     break;
                 }
                 case "destroy" : {
-                    TreeCh.DestroyBranch();
-                    // должен вернуть изменения.
+                    //TreeCh.DestroyBranch();
+                    System.out.println(TreeCh.GetChange());// должен вернуть изменения.
                     break;
                 }
                 case "status" : {
-                    dos.writeInt(TreeCh.GetChange());
+                    dos.writeUTF(TreeCh.GetChange());
                     dos.flush();
                     break;
                 }

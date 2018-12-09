@@ -19,7 +19,7 @@ public interface  TreeChangesInterface {
     
     void DestroyBranch(); // Уничтожить ветку
     
-    int GetChange(); // выдать изменения с момента последнего обращения
+    String GetChange(); // выдать изменения с момента последнего обращения
     
     void StopGrowth();
     
