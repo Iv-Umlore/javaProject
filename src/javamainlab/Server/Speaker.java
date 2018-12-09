@@ -48,8 +48,6 @@ public class Speaker extends Thread{
         try {
             command = dis.readUTF();
             
-            System.out.println ( command );
-            
             switch (command) {
                 case "speed": {                    
                     TreeCh.ChangeGrowthSpeed(dis.read());

@@ -67,7 +67,7 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         IsStarted = true;
         while (IsStarted){
             GrowthStep();
-            System.out.println(tree.ToString());
+            //System.out.println(tree.ToString());
             try {
                 sleep(speed);
             } catch (InterruptedException ex) {

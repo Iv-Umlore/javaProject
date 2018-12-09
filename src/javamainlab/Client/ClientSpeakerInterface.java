@@ -15,5 +15,6 @@ public interface ClientSpeakerInterface {
     
     void DestroyBranch();
     
+    String GetImage();
     
 }

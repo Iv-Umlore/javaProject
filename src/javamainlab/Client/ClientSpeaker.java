@@ -34,8 +34,7 @@ public class ClientSpeaker implements ClientSpeakerInterface {
     }
     
     @Override
-    public void SpeedChange(int newSpeed) {  
-        System.out.println("Bams ");   
+    public void SpeedChange(int newSpeed) {     
         if (newSpeed != speed) {    
             try {
                 command = "speed";
@@ -47,10 +46,8 @@ public class ClientSpeaker implements ClientSpeakerInterface {
             } catch (IOException ex) {
                 Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
             }
-           System.out.println("hello");
-            }
-        System.out.println("Bams");
         }
+    }
 
     @Override
     public void DestroyBranch() {
@@ -61,6 +58,20 @@ public class ClientSpeaker implements ClientSpeakerInterface {
         } catch (IOException ex) {
             Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public String GetImage() {
+        try {
+            command = "status";        
+            dos.writeUTF(command);
+            dos.flush();
+            
+            return dis.readUTF();
+        } catch (IOException ex) {
+            Logger.getLogger(ClientSpeaker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
     
 }

@@ -45,9 +45,7 @@ public class Tree implements TreeInterface{
         thisTree = String.valueOf(MainBranch.ReturnNumberAll());
         
         thisTree += MainBranch.ToString();
-        
-        System.out.println("Дерево закончилось!");
-        
+                
         return thisTree;
     }
     

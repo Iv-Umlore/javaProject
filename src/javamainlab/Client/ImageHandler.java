@@ -5,20 +5,34 @@
  */
 package javamainlab.Client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Umlore
  */
 public class ImageHandler extends Thread{
     
-    ImageInterface image;
+    private ImageInterface image;
+    private ClientSpeakerInterface _CSI;
+    public String message;
     
-    public ImageHandler(){
+    public ImageHandler(ClientSpeakerInterface CSI){
+        _CSI = CSI;
         image = new Image();
     }
     
     @Override
     public void run() {
-        
+        while (true) {
+            message = _CSI.GetImage();
+            System.out.println(message);
+            try {    
+                sleep(2000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ImageHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                }
     }
 }
