@@ -20,73 +20,20 @@ public class Branch implements BranchInterface{
         
     private GrowthDirection Direct;
     private int StartX, StartY;
-    private final int FinalX, FinalY;
-    private int length, width;
-    private double parametrT;
-    private int numberAllBranch;
-    private int numberHerBranches;
-    
+    private int FinalX, FinalY;
+    private int width;    
+    private int numberHerBranches;    
     private BranchInterface ParentBranch;    
     private BranchInterface ClildFirstBranch;
     private BranchInterface ClildSecondBranch;
 
-    private boolean IsGrowth;
+    private String thisBranch;
     
-    private Random rand;
         
-    public Branch(GrowthDirection _thisBranch, int X, int Y, BranchInterface Parent) {
-        // ( Параметры )
-        IsGrowth = false;
-        
-        ParentBranch = Parent;
-        ClildFirstBranch = null;
-        ClildSecondBranch = null;
-        
-        rand = new Random();
-                
-        StartX = X;
-        StartY = Y;
-        Direct = _thisBranch;
-        length = rand.nextInt(5) + 4;
-        width = 1;
-        numberAllBranch = 0;
-        numberHerBranches = 0;
-            switch (Direct) {
-                case up : {
-                    parametrT = rand.nextDouble() % (PI/3) + (PI/3); 
-                    // угол 60 - 120 градусов
-                    break;
-                }
-                case right : {
-                    parametrT = rand.nextDouble() % (PI/3);
-                    // угол 0 - 60 градусов
-                    break;
-                }
-                case left : {
-                    parametrT = rand.nextDouble() % (PI/3) + 2*(PI/3);
-                    // угол 120 - 180 градусов
-                    break;
-                }
-            }
-        
-        FinalX = StartX + (int)(round(cos(parametrT)));
-        FinalY = StartY + (int)(round(sin(parametrT)));
-    }
-        
+    public Branch(String str/*,GrowthDirection _thisBranch, int X, int Y, BranchInterface Parent*/) {
+        thisBranch = str;
+    }        
     
-    @Override
-    public Branch GenerateChildBranch(/*1ая или вторая ветка, и все параметры для brance*/) {
-        return this;
-    }
-
-    @Override
-    public void DeleteThisBranch() {
-        if (ClildSecondBranch != null) ClildSecondBranch.DeleteThisBranch();
-        ClildSecondBranch = null;
-        if (ClildFirstBranch != null) ClildFirstBranch.DeleteThisBranch();
-        ClildFirstBranch = null;    
-    }
-
     @Override
     public BranchInterface GetParentBranch() {
         return ParentBranch;
@@ -103,8 +50,18 @@ public class Branch implements BranchInterface{
     }
 
     @Override
-    public BranchInterface ReturnThisBranch() {
-        return this;
+    public String ReturnThisBranch() {
+        return thisBranch;
+    }
+
+    @Override
+    public BranchInterface FromString(String str, BranchInterface Parent) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void SetBranch(String str) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
       
 }

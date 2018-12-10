@@ -1,4 +1,2 @@
-admin admin
-User123 12345
-default 209147182741312
+﻿Admin admin
 Umlore 1234￿

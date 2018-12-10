@@ -223,7 +223,7 @@ public class Branch implements BranchInterface{
 
     @Override
     public Branch FromString(String str, BranchInterface point) {
-        int count = 0, i = 0;
+        int i = 0;
         String thisBranch = "";
         
         ClildFirstBranch = null;
@@ -233,14 +233,13 @@ public class Branch implements BranchInterface{
         
         while ((str.charAt(i)) != '\n'){
             thisBranch += str.charAt(i);
-            i++;
-            count++;
+            i++;            
         }
         
         numberAllBranch = 0;
         SetBranch(thisBranch);
         
-        str = str.substring(count + 1);
+        str = str.substring(i + 1);
         
         if (numberHerBranches == 1) {
             ClildFirstBranch = ClildFirstBranch.FromString(str,this);
@@ -260,16 +259,26 @@ public class Branch implements BranchInterface{
     @Override
     public void SetBranch(String str) {
         
-        String timeString = "";
+        String timeString;
         int i = 0, wordnumb = 0;
         
+        str = str.substring(0);
+        
         while (str.charAt(i) != '\n') {
-            i++;
-            timeString = "";
-            while ((str.charAt(i) != ' ') || (str.charAt(i) != '\n')){
-                timeString += str.charAt(i);
+            if (str.charAt(i) != ' ') {
                 i++;
+                System.out.print(str.charAt(i) + " ");
             }
+            System.out.print(i + " ");
+            timeString = "";
+            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')){
+                timeString += str.charAt(i);
+                System.out.print(i + " ");
+                i++;     
+            }
+            
+            //System.out.println("timestr: " +timeString);
+            
             switch (wordnumb) {
                 case 0: {
                     if (timeString.equalsIgnoreCase("up")) Direct = up;
@@ -277,7 +286,7 @@ public class Branch implements BranchInterface{
                     if (timeString.equalsIgnoreCase("right")) Direct = right;
                     break;
                 }
-                case 1: {
+                case 1: {                    
                     StartX = Integer.parseInt(timeString);
                     break;
                 }

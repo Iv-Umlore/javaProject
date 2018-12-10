@@ -19,18 +19,18 @@ enum GrowthDirection { left, right, up};
 public interface BranchInterface {
     
     public static double PI = 3.1415926535;
-    
-    public Branch GenerateChildBranch();
-    
-    public void DeleteThisBranch();
-        
+       
     public BranchInterface GetParentBranch();
     
     public BranchInterface GetClildFirstBranch();
     
     public BranchInterface GetClildSecondBranch();
     
-    public BranchInterface ReturnThisBranch();
+    public BranchInterface FromString(String str, BranchInterface Parent);
+    
+    public void SetBranch(String str);
+    
+    public String ReturnThisBranch();
     
     // листья потом сделаем
 }

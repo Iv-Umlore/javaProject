@@ -16,7 +16,6 @@ public class ImageHandler extends Thread{
     
     private ImageInterface image;
     private ClientSpeakerInterface _CSI;
-    public String message;
     
     public ImageHandler(ClientSpeakerInterface CSI){
         _CSI = CSI;
@@ -26,8 +25,8 @@ public class ImageHandler extends Thread{
     @Override
     public void run() {
         while (true) {
-            message = _CSI.GetImage();
-            System.out.println(message);
+            image.SetTree(_CSI.GetImage());
+            System.out.println(image.GetTree());
             try {    
                 sleep(2000);
             } catch (InterruptedException ex) {

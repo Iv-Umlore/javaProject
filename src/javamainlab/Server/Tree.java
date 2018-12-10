@@ -20,7 +20,7 @@ import static javamainlab.Server.GrowthDirection.up;
 public class Tree implements TreeInterface{
     
     private BranchInterface MainBranch;
-    private BranchInterface CurrentBranch;
+    //private BranchInterface CurrentBranch;
     
     private String FileWay;
     private FileReader FR;
@@ -32,24 +32,27 @@ public class Tree implements TreeInterface{
     public Tree(String UN, boolean Bol) throws FileNotFoundException, IOException{
         // Bol = true - Создание нового дерева, Bol = false - загрузка
         
-        FileWay = "src\\javamainlab\\Users\\" + UN + ".bin";
-        FW = new FileWriter(FileWay);
+        FileWay = "src\\javamainlab\\Users\\" + UN + ".txt";
         if (Bol) {
             MainBranch = new Branch(up,120,240,null);
-            CurrentBranch = MainBranch;
-            
+            //CurrentBranch = MainBranch;
+            SaveTree();
         }
         else {
-            FR = new FileReader(FileWay);
+            MainBranch = new Branch(up,120,240,null);
             SetTree();
         }       
+        
+        
         
     }
 
     @Override
-    public void SaveTree() {        
+    public void SaveTree() { 
         try {
+            FW = new FileWriter(FileWay);
             FW.write(this.ToString());
+            FW.close();
         } catch (IOException ex) {
             Logger.getLogger(Tree.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,24 +61,35 @@ public class Tree implements TreeInterface{
     @Override
     public void SetTree() {
         
-        int i;
-        String str = "";
-        
-        try {        
-        while ((i = FR.read())!= -1) {
-                str = str + (char)i;
+        try {
+            
+            int i;
+            String str = "";
+            
+            FR = new FileReader(FileWay);
+            
+            while ((i = FR.read())!= -1) {
+                str += (char)i;
             }
+
+            System.out.println(str);
+            
+            i = 0;
+            while (str.charAt(i) != ' ') {
+                i++;
+            }
+            
+            str = str.substring(i);
+            
+            MainBranch.FromString(str,null);
+            
+            FR.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tree.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Tree.class.getName()).log(Level.SEVERE, null, ex);
         }
-        i = 0;
-        while (str.charAt(i) != ' ') {
-            i++;
-        }
-        
-        str = str.substring(i);
-        
-        MainBranch.FromString(str,null);
     }
 
     @Override
