@@ -9,7 +9,7 @@ package javamainlab.Server;
  *
  * @author Umlore
  */
-public interface  TreeChangesInterface {
+public interface TreeChangesInterface {
     
     void ChangeGrowthSpeed(int newSpeed);
     

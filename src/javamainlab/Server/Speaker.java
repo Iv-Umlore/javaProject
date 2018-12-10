@@ -24,24 +24,20 @@ public class Speaker extends Thread{
     private String userName;
     private String command;
     
-    private TreeChanges/*Interface*/ TreeCh;
+    private TreeChanges TreeCh;
     
     public Speaker (Socket s, String UName) throws IOException{
         sock = s;
         dis = new DataInputStream(sock.getInputStream());
         dos = new DataOutputStream(sock.getOutputStream());
         userName = UName;
-        TreeCh = new TreeChanges(/*Way*/);
+        TreeCh = new TreeChanges(userName, false);
     }
     
     @Override
     public void run(){
         
-        System.out.println("User " + userName + " is login!");
-        //System.out.println(dis);
-        //System.out.println(dos);
-           
-        
+        System.out.println("User " + userName + " is login!");  
         
         TreeCh.start();
         while (true) {
