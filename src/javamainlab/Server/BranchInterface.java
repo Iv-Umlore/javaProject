@@ -13,6 +13,7 @@ package javamainlab.Server;
 enum GrowthDirection { left, right, up};
 
 
+
 public interface BranchInterface {
     
     public static double PI = 3.1415926535;
@@ -38,10 +39,6 @@ public interface BranchInterface {
     public String ToString();
     
     public int ReturnNumberAll();
-    
-    public BranchInterface FromString(String str, BranchInterface Parent);
-    
-    public void SetBranch(String str);
     
     // листья потом сделаем
 }

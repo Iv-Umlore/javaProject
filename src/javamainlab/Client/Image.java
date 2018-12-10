@@ -13,9 +13,11 @@ public class Image implements ImageInterface {
     
     int[][] arr;
     
-    Branch mainBranch;
-    
-    Image() {}
+    Image() {
+       arr = new int[240][]; 
+       for (int i = 0; i < 240; i++)
+           arr[i] = new int[240];
+    }
     
     public int[][] ReturnArray() {
         return arr;
@@ -35,16 +37,4 @@ public class Image implements ImageInterface {
     public int[][] GetImage() {
         return arr;
     }
-
-    @Override
-    public String GetTree() {
-        return mainBranch.ReturnThisBranch();
-    }
-
-    @Override
-    public void SetTree(String str) {
-        mainBranch.SetBranch(str);
-    }
-    
-    
 }

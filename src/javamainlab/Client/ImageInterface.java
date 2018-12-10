@@ -17,8 +17,4 @@ public interface ImageInterface {
      
      public int[][] GetImage();
      
-     public String GetTree();
-     
-     public void SetTree(String str);
-     
 }

@@ -76,7 +76,7 @@ public class Server extends Thread {
                     dos.writeBoolean(users.Registration(Login, pass));
                     dos.flush();
                     
-                    TreeChangesInterface TCI = new TreeChanges(Login, true);
+                    TreeChangesInterface TCI = new TreeChanges();
                     TCI.SaveTree();
                     
                     } catch (IOException ex) {

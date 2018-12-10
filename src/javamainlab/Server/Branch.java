@@ -20,8 +20,7 @@ public class Branch implements BranchInterface{
         
     private GrowthDirection Direct;
     private int StartX, StartY;
-    private int FinalX;
-    private int FinalY;
+    private final int FinalX, FinalY;
     private int length, width;
     private double parametrT;
     public int numberAllBranch;
@@ -36,7 +35,8 @@ public class Branch implements BranchInterface{
     private boolean IsGrowth;
     
     private Random rand;
-        
+    
+    
     public Branch(GrowthDirection _thisBranch, int X, int Y, BranchInterface Parent) {
         
         IsGrowth = false;
@@ -219,102 +219,6 @@ public class Branch implements BranchInterface{
     @Override
     public int ReturnNumberAll() {
         return numberAllBranch;
-    }
-
-    @Override
-    public Branch FromString(String str, BranchInterface point) {
-        int i = 0;
-        String thisBranch = "";
-        
-        ClildFirstBranch = null;
-        ClildSecondBranch = null;
-        
-        ParentBranch = point;
-        
-        while ((str.charAt(i)) != '\n'){
-            thisBranch += str.charAt(i);
-            i++;            
-        }
-        
-        numberAllBranch = 0;
-        SetBranch(thisBranch);
-        
-        str = str.substring(i + 1);
-        
-        if (numberHerBranches == 1) {
-            ClildFirstBranch = ClildFirstBranch.FromString(str,this);
-        }
-        
-        if (numberHerBranches == 2) {
-            ClildFirstBranch = FromString(str,this);
-            ClildSecondBranch  = FromString(str,this);
-        }
-        
-        PlusPlusBranch();
-        
-        return this;
-        
-    }
-
-    @Override
-    public void SetBranch(String str) {
-        
-        String timeString;
-        int i = 0, wordnumb = 0;
-        
-        str = str.substring(0);
-        
-        while (str.charAt(i) != '\n') {
-            if (str.charAt(i) != ' ') {
-                i++;
-                System.out.print(str.charAt(i) + " ");
-            }
-            System.out.print(i + " ");
-            timeString = "";
-            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')){
-                timeString += str.charAt(i);
-                System.out.print(i + " ");
-                i++;     
-            }
-            
-            //System.out.println("timestr: " +timeString);
-            
-            switch (wordnumb) {
-                case 0: {
-                    if (timeString.equalsIgnoreCase("up")) Direct = up;
-                    if (timeString.equalsIgnoreCase("left")) Direct = left;
-                    if (timeString.equalsIgnoreCase("right")) Direct = right;
-                    break;
-                }
-                case 1: {                    
-                    StartX = Integer.parseInt(timeString);
-                    break;
-                }
-                case 2: {
-                    StartY = Integer.parseInt(timeString);
-                    break;
-                }
-                case 3: {
-                    FinalX = Integer.parseInt(timeString);
-                    break;
-                }
-                case 4: {
-                    FinalY = Integer.parseInt(timeString);
-                    break;
-                }
-                case 5: {
-                    width = Integer.parseInt(timeString);
-                    break;
-                }
-                case 6: {
-                    numberHerBranches = Integer.parseInt(timeString);
-                    break;
-                }               
-            }
-            
-            wordnumb++;
-            
-        }
     }
     
 }
