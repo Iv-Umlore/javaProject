@@ -36,7 +36,6 @@ public class UserIdentification implements UserIdentificationInterface {
                 pass = pass + (char)i;                
             } 
             i = FR.read();
-            //System.out.println(Login + " " + pass); 
             HT.put(Login, pass);
         }
         FR.close();

@@ -72,4 +72,3 @@ public class Speaker extends Thread{
     
     
 }
-
