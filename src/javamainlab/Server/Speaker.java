@@ -37,7 +37,7 @@ public class Speaker extends Thread{
     @Override
     public void run(){
         
-        System.out.println("User " + userName + " is login!");  
+        System.out.println("\nUser " + userName + " is login!");  
         
         TreeCh.start();
         while (true) {

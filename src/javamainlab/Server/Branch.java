@@ -236,6 +236,9 @@ public class Branch implements BranchInterface{
             i++;            
         }
         
+        thisBranch += str.charAt(i);
+        i++;   
+        
         numberAllBranch = 0;
         SetBranch(thisBranch);
         
@@ -261,24 +264,49 @@ public class Branch implements BranchInterface{
         
         String timeString;
         int i = 0, wordnumb = 0;
-        
-        str = str.substring(0);
-        
-        while (str.charAt(i) != '\n') {
-            if (str.charAt(i) != ' ') {
+        int maxChars = str.length();
+                
+        while (i < maxChars) {
+            /*if (str.charAt(i) != ' ') {
                 i++;
                 System.out.print(str.charAt(i) + " ");
-            }
-            System.out.print(i + " ");
+            }*/
+            i++;
+            
             timeString = "";
-            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')){
+            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {                
                 timeString += str.charAt(i);
-                System.out.print(i + " ");
-                i++;     
+                i++;
+            }            
+           System.out.println();
+           System.out.print(timeString);
+            
+            
+           /*i++;
+            char time;
+            timeString = "";
+            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {
+                time = str.charAt(i);
+                timeString += time;
+                i++;
+            }*/
+            /*System.out.println(i + " ");
+            timeString = "";
+            System.out.println("start word");
+            char cumb = str.charAt(i);
+            while ((str.charAt(i) != ' ') && (cumb != '\n')){
+                
+                timeString += cumb;
+                System.out.println(i + " " + cumb);
+                i++;    
+                cumb = str.charAt(i);
+                
             }
             
-            //System.out.println("timestr: " +timeString);
+            System.out.println("end word");
             
+            System.out.println(timeString + " ");
+            *//*
             switch (wordnumb) {
                 case 0: {
                     if (timeString.equalsIgnoreCase("up")) Direct = up;
@@ -311,10 +339,10 @@ public class Branch implements BranchInterface{
                     break;
                 }               
             }
-            
-            wordnumb++;
-            
+            */
+           if (str.charAt(i) == ' ') wordnumb++;
         }
+        System.out.print(" " + wordnumb);
     }
     
 }

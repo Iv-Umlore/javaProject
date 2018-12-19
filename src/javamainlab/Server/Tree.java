@@ -33,6 +33,7 @@ public class Tree implements TreeInterface{
         // Bol = true - Создание нового дерева, Bol = false - загрузка
         
         FileWay = "src\\javamainlab\\Users\\" + UN + ".txt";
+        
         if (Bol) {
             MainBranch = new Branch(up,120,240,null);
             //CurrentBranch = MainBranch;
