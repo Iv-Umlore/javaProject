@@ -23,9 +23,9 @@ public interface BranchInterface {
         
     public BranchInterface GetParentBranch();
     
-    public BranchInterface GetClildFirstBranch();
+    public BranchInterface GetChildFirstBranch();
     
-    public BranchInterface GetClildSecondBranch();
+    public BranchInterface GetChildSecondBranch();
     
     public BranchInterface ReturnThisBranch();
     

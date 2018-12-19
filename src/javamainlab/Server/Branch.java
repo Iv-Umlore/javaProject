@@ -30,8 +30,8 @@ public class Branch implements BranchInterface{
     private String thisBranch;
     
     private BranchInterface ParentBranch;    
-    private BranchInterface ClildFirstBranch;
-    private BranchInterface ClildSecondBranch;
+    private BranchInterface ChildFirstBranch;
+    private BranchInterface ChildSecondBranch;
 
     private boolean IsGrowth;
     
@@ -42,8 +42,8 @@ public class Branch implements BranchInterface{
         IsGrowth = false;
         
         ParentBranch = Parent;
-        ClildFirstBranch = null;
-        ClildSecondBranch = null;
+        ChildFirstBranch = null;
+        ChildSecondBranch = null;
         
         rand = new Random();
                 
@@ -82,14 +82,14 @@ public class Branch implements BranchInterface{
         if (numberHerBranches < 2){
             
             if (numberHerBranches == 1) { 
-                if (ClildFirstBranch == null) ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
-                else ClildSecondBranch  = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                if (ChildFirstBranch == null) ChildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                else ChildSecondBranch  = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
                 PlusPlusBranch();   
                 numberHerBranches++;             
             }
             
             if (numberHerBranches == 0) { 
-                ClildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
+                ChildFirstBranch = new Branch(GenerateDirection(Direct), FinalX, FinalY, this);
                 PlusPlusBranch();                
                 numberHerBranches++;
             }            
@@ -98,10 +98,10 @@ public class Branch implements BranchInterface{
 
     @Override
     public void DeleteThisBranch() {
-        if (ClildSecondBranch != null) ClildSecondBranch.DeleteThisBranch();
-        ClildSecondBranch = null;
-        if (ClildFirstBranch != null) ClildFirstBranch.DeleteThisBranch();
-        ClildFirstBranch = null;    
+        if (ChildSecondBranch != null) ChildSecondBranch.DeleteThisBranch();
+        ChildSecondBranch = null;
+        if (ChildFirstBranch != null) ChildFirstBranch.DeleteThisBranch();
+        ChildFirstBranch = null;    
     }
 
     @Override
@@ -110,13 +110,13 @@ public class Branch implements BranchInterface{
     }
 
     @Override
-    public BranchInterface GetClildFirstBranch() {
-        return ClildFirstBranch;
+    public BranchInterface GetChildFirstBranch() {
+        return ChildFirstBranch;
     }
 
     @Override
-    public BranchInterface GetClildSecondBranch() {
-        return ClildSecondBranch;
+    public BranchInterface GetChildSecondBranch() {
+        return ChildSecondBranch;
     }
 
     @Override
@@ -162,11 +162,11 @@ public class Branch implements BranchInterface{
         
         rand = new Random();              
                 
-        if (ClildFirstBranch!= null) {
-            ClildFirstBranch.Growth();
+        if (ChildFirstBranch!= null) {
+            ChildFirstBranch.Growth();
         }
-        if (ClildSecondBranch != null) {
-            ClildSecondBranch.Growth();
+        if (ChildSecondBranch != null) {
+            ChildSecondBranch.Growth();
         } 
           
         if (numberHerBranches < 2) {
@@ -206,11 +206,11 @@ public class Branch implements BranchInterface{
                 String.valueOf(FinalY) + " " + String.valueOf(width) + " " +
                 String.valueOf(numberHerBranches) + '\n';
         
-        if (ClildFirstBranch != null) {
-            thisBranch = thisBranch + ClildFirstBranch.ToString();
+        if (ChildFirstBranch != null) {
+            thisBranch = thisBranch + ChildFirstBranch.ToString();
         }
-        if (ClildSecondBranch != null) {
-            thisBranch = thisBranch + ClildSecondBranch.ToString();
+        if (ChildSecondBranch != null) {
+            thisBranch = thisBranch + ChildSecondBranch.ToString();
         }
         
         return thisBranch;
@@ -224,13 +224,13 @@ public class Branch implements BranchInterface{
     @Override
     public Branch FromString(String str, BranchInterface point) {
         
-        numberAllBranch = 1;
+        numberAllBranch = 0;
         
         int i = 0;
         String thisBranch = "";
         
-        ClildFirstBranch = null;
-        ClildSecondBranch = null;
+        ChildFirstBranch = null;
+        ChildSecondBranch = null;
         
         ParentBranch = point;
         
@@ -242,21 +242,22 @@ public class Branch implements BranchInterface{
         thisBranch += str.charAt(i);
         i++;   
         
-        //numberAllBranch = 0;
         SetBranch(thisBranch);
-        //System.out.println(thisBranch);
         if (i < str.length())
             str = str.substring(i + 1);
         
         if (numberHerBranches == 1) {
-            ClildFirstBranch = ClildFirstBranch.FromString(str,this);
+            ChildFirstBranch = new Branch(Direct,FinalX,FinalY,this);
+            ChildFirstBranch = ChildFirstBranch.FromString(str,this);
         }
         
         if (numberHerBranches == 2) {
             System.out.println(str);
-            ClildFirstBranch = FromString(str,this);
+            ChildFirstBranch = new Branch(Direct,FinalX,FinalY,this);
+            ChildFirstBranch = ChildFirstBranch.FromString(str,this);
             System.out.println(str);
-            ClildSecondBranch = FromString(str,this);
+            ChildSecondBranch = new Branch(Direct,FinalX,FinalY,this);
+            ChildSecondBranch = ChildSecondBranch.FromString(str,this);
         }
         
         PlusPlusBranch();
