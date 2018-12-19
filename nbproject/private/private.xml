@@ -4,12 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageHandler.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/BranchInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Speaker.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/Image.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeChanges.java</file>
+=======
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/BranchInterface.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/Image.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Users/Users.txt</file>
+>>>>>>> SecondB
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Tree.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageInterface.java</file>
 =======
@@ -18,6 +24,13 @@
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Tree.java</file>
 >>>>>>> SecondB
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/ServerGUI.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientSpeaker.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageHandler.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Speaker.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeInterface.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/TreeChanges.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Server.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Branch.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientSpeaker.java</file>
         </group>
