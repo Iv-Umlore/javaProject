@@ -128,7 +128,7 @@ public class Branch implements BranchInterface{
     public void PlusPlusBranch() {
         numberAllBranch++;
         width = round(numberAllBranch / 2);
-        if (GetParentBranch() != null) GetParentBranch().PlusPlusBranch();
+        if ((this.GetParentBranch()) != null) GetParentBranch().PlusPlusBranch();
     }
     
     private GrowthDirection GenerateDirection(GrowthDirection that){
@@ -223,6 +223,9 @@ public class Branch implements BranchInterface{
 
     @Override
     public Branch FromString(String str, BranchInterface point) {
+        
+        numberAllBranch = 1;
+        
         int i = 0;
         String thisBranch = "";
         
@@ -239,18 +242,21 @@ public class Branch implements BranchInterface{
         thisBranch += str.charAt(i);
         i++;   
         
-        numberAllBranch = 0;
+        //numberAllBranch = 0;
         SetBranch(thisBranch);
-        
-        str = str.substring(i + 1);
+        //System.out.println(thisBranch);
+        if (i < str.length())
+            str = str.substring(i + 1);
         
         if (numberHerBranches == 1) {
             ClildFirstBranch = ClildFirstBranch.FromString(str,this);
         }
         
         if (numberHerBranches == 2) {
+            System.out.println(str);
             ClildFirstBranch = FromString(str,this);
-            ClildSecondBranch  = FromString(str,this);
+            System.out.println(str);
+            ClildSecondBranch = FromString(str,this);
         }
         
         PlusPlusBranch();
@@ -266,47 +272,17 @@ public class Branch implements BranchInterface{
         int i = 0, wordnumb = 0;
         int maxChars = str.length();
                 
-        while (i < maxChars) {
-            /*if (str.charAt(i) != ' ') {
-                i++;
-                System.out.print(str.charAt(i) + " ");
-            }*/
-            i++;
+        while (i < maxChars - 1) {
+            
+            if (str.charAt(i) == ' ') i++;
             
             timeString = "";
             while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {                
                 timeString += str.charAt(i);
                 i++;
             }            
-           System.out.println();
-           System.out.print(timeString);
+           
             
-            
-           /*i++;
-            char time;
-            timeString = "";
-            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {
-                time = str.charAt(i);
-                timeString += time;
-                i++;
-            }*/
-            /*System.out.println(i + " ");
-            timeString = "";
-            System.out.println("start word");
-            char cumb = str.charAt(i);
-            while ((str.charAt(i) != ' ') && (cumb != '\n')){
-                
-                timeString += cumb;
-                System.out.println(i + " " + cumb);
-                i++;    
-                cumb = str.charAt(i);
-                
-            }
-            
-            System.out.println("end word");
-            
-            System.out.println(timeString + " ");
-            *//*
             switch (wordnumb) {
                 case 0: {
                     if (timeString.equalsIgnoreCase("up")) Direct = up;
@@ -339,10 +315,8 @@ public class Branch implements BranchInterface{
                     break;
                 }               
             }
-            */
-           if (str.charAt(i) == ' ') wordnumb++;
+           wordnumb++;
         }
-        System.out.print(" " + wordnumb);
     }
     
 }

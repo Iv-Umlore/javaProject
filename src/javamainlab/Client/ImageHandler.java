@@ -25,10 +25,9 @@ public class ImageHandler extends Thread{
     @Override
     public void run() {
         while (true) {
-            image.SetTree(_CSI.GetImage());
-            System.out.println(image.GetTree());
+            System.out.println(_CSI.GetImage());
             try {    
-                sleep(2000);
+                sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ImageHandler.class.getName()).log(Level.SEVERE, null, ex);
             }

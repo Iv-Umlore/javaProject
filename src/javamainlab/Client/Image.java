@@ -13,7 +13,7 @@ public class Image implements ImageInterface {
     
     int[][] arr;
     
-    Branch mainBranch;
+    String mainBranch;
     
     Image() {}
     
@@ -34,17 +34,6 @@ public class Image implements ImageInterface {
     @Override
     public int[][] GetImage() {
         return arr;
-    }
-
-    @Override
-    public String GetTree() {
-        return mainBranch.ReturnThisBranch();
-    }
-
-    @Override
-    public void SetTree(String str) {
-        mainBranch.SetBranch(str);
-    }
-    
+    }    
     
 }

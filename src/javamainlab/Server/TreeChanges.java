@@ -46,6 +46,7 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     @Override
     public void GrowthStep() {
         tree.GetTree().Growth();
+        System.out.println("step");
     }
 
     @Override
