@@ -5,6 +5,9 @@
  */
 package javamainlab.Server;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,16 +20,21 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     
     private boolean IsStarted;
     private int speed;  // 2000 - x1, 1000 - x2, 400 - x5, 200 - x10;
-    private int HMSteps;
+    private int count;   
     
-    private TreeInterface tree;
+    private TreeInterface tree;  
     
-    public TreeChanges() {
+    public TreeChanges(String UN, boolean Bol) {
+        
         speed = 2000;
         IsStarted = false;
-        HMSteps = 0;
+        count = 0;
         
-        tree = new Tree();
+        try {                
+            tree = new Tree(UN, Bol);
+        } catch (IOException ex) {
+            Logger.getLogger(TreeChanges.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override
@@ -38,12 +46,12 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
     @Override
     public void GrowthStep() {
         tree.GetTree().Growth();
-        HMSteps++;
+        System.out.println("step");
     }
 
     @Override
     public void SaveTree() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tree.SaveTree();
     }
 
     @Override
@@ -67,6 +75,11 @@ public class TreeChanges extends Thread implements TreeChangesInterface {
         IsStarted = true;
         while (IsStarted){
             GrowthStep();
+            count++;
+            if (count >= 5) {
+                tree.SaveTree();
+                count = 0;
+            }
             //System.out.println(tree.ToString());
             try {
                 sleep(speed);

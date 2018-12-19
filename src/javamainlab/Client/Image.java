@@ -13,11 +13,9 @@ public class Image implements ImageInterface {
     
     int[][] arr;
     
-    Image() {
-       arr = new int[240][]; 
-       for (int i = 0; i < 240; i++)
-           arr[i] = new int[240];
-    }
+    String mainBranch;
+    
+    Image() {}
     
     public int[][] ReturnArray() {
         return arr;
@@ -36,5 +34,6 @@ public class Image implements ImageInterface {
     @Override
     public int[][] GetImage() {
         return arr;
-    }
+    }    
+    
 }
