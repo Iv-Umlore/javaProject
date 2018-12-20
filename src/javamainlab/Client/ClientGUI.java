@@ -21,6 +21,7 @@ public class ClientGUI extends javax.swing.JFrame {
         
         ClientSpeakerInterface CSI;
         ImageHandler Image;
+        Observer obs;
         int speed;
     
     /**
@@ -30,7 +31,9 @@ public class ClientGUI extends javax.swing.JFrame {
         CSI = new ClientSpeaker(serv);
         Image = new ImageHandler(CSI);
         Image.start();
-        initComponents(); 
+        initComponents();
+        obs = new Observer(Image,this);
+        obs.start();
     }
         
 
@@ -48,7 +51,8 @@ public class ClientGUI extends javax.swing.JFrame {
         x5 = new javax.swing.JButton();
         x10 = new javax.swing.JButton();
         x2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +91,10 @@ public class ClientGUI extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,7 +105,7 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(x5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,13 +129,17 @@ public class ClientGUI extends javax.swing.JFrame {
                         .addComponent(x5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(x10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1))
+                    .addComponent(jScrollPane1))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void ReDraw(){
+        jTextArea1.setText(Image.GetTree());
+    }
+    
     private void x1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1ActionPerformed
         CSI.SpeedChange(1);
         //speed = 1;
@@ -144,13 +156,13 @@ public class ClientGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_x10ActionPerformed
 
     private void x2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x2ActionPerformed
-        System.out.println("Bams"); 
         CSI.SpeedChange(2); 
         //speed = 2;
     }//GEN-LAST:event_x2ActionPerformed
 
     private void DeleteBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBranchActionPerformed
-        CSI.DestroyBranch();
+        CSI.DestroyBranch(); 
+        ReDraw();
     }//GEN-LAST:event_DeleteBranchActionPerformed
 
     /**
@@ -181,24 +193,28 @@ public class ClientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
+                     
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     new ClientGUI(serv).setVisible(true);
                     /*while (true) {
                         jTextField1.setText(Image.message);
-                    }*/
+                    }*/                    
+                    //obs.start();
                 } catch (IOException ex) {
                     Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeleteBranch;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton x1;
     private javax.swing.JButton x10;
     private javax.swing.JButton x2;

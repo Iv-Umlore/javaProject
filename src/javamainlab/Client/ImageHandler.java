@@ -16,16 +16,29 @@ public class ImageHandler extends Thread{
     
     private ImageInterface image;
     private ClientSpeakerInterface _CSI;
-    
+    private boolean changes = false;
     public ImageHandler(ClientSpeakerInterface CSI){
         _CSI = CSI;
         image = new Image();
     }
     
+    public boolean GetChanges(){
+        if (changes){
+            changes = false;
+            return true;
+        }
+        return false; 
+    }
+    
+    public String GetTree(){
+        return image.GetImageTree();
+    }
+    
     @Override
     public void run() {
         while (true) {
-            System.out.println(_CSI.GetImage());
+            image.SetTree(_CSI.GetImage());
+            changes = true;
             try {    
                 sleep(1000);
             } catch (InterruptedException ex) {

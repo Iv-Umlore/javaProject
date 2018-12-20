@@ -127,7 +127,7 @@ public class LoginGUI extends javax.swing.JFrame {
         try {
             serv = new Socket("localhost",1234);
             isLogin = FWI.Authorization(jTextField2.getText(),jPasswordField1.getText(),new DataInputStream(serv.getInputStream()),new DataOutputStream(serv.getOutputStream()));
-            System.out.println(isLogin);
+            
             if (isLogin) 
                 jTextField1.setText("Password is correct");
             else 
