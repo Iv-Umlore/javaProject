@@ -17,5 +17,10 @@ public interface ImageInterface {
      
      public int[][] GetImage();
      
+     public void SetTree(String str);
+     
+     public String GetImageTree();
+     
+     public void Draw();
      
 }

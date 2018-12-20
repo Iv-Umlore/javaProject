@@ -13,7 +13,7 @@ public class Image implements ImageInterface {
     
     int[][] arr;
     
-    String mainBranch;
+    String Tree;
     
     Image() {}
     
@@ -35,5 +35,81 @@ public class Image implements ImageInterface {
     public int[][] GetImage() {
         return arr;
     }    
+
+    @Override
+    public void SetTree(String str) {
+        
+        Tree = "";
+        int ForFor = 0;
+        int i = 0;
+        int j = 0;
+        String LocalTree = "";
+        
+        while(str.charAt(i) != ' '){
+            LocalTree += str.charAt(i);
+            i++;
+        }
+        
+        ForFor = Integer.parseInt(LocalTree);
+        
+        int wordnumb;
+        for (j = 0; j < ForFor; j++) { 
+            wordnumb = 0;
+        while (str.charAt(i) != '\n') {
+            
+            if (str.charAt(i) == ' ') i++;
+            
+            LocalTree = "";
+            while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {                
+                LocalTree += str.charAt(i);
+                i++;
+            }            
+           
+            
+            switch (wordnumb) {
+                case 0: {
+                    break;
+                }
+                case 1: {                    
+                    Tree += "( " + LocalTree + ", ";
+                    break;
+                }
+                case 2: {
+                    Tree += LocalTree + " )";
+                    break;
+                }
+                case 3: {
+                    Tree += " ( " + LocalTree + ", ";
+                    break;
+                }
+                case 4: {
+                    Tree += LocalTree + " ) ";
+                    break;
+                }
+                case 5: {
+                    Tree += " width : " + LocalTree;
+                    break;
+                }
+                case 6: {
+                    Tree += '\n';
+                    break;
+                }  
+                default: break;
+            }
+           wordnumb++;
+        }        
+        i++;
+        } 
+    }
+
+    @Override
+    public String GetImageTree() {
+        return Tree;
+    }
+    
+    @Override
+    public void Draw() {
+        System.out.println(Tree);
+    }
     
 }

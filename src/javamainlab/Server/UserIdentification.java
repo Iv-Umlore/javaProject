@@ -74,6 +74,7 @@ public class UserIdentification implements UserIdentificationInterface {
     } 
     
     public boolean CheckLogPas( String Login, String pass){
+        if (users.get(Login) == null) return false;
         return (users.get(Login).equals(pass));
     }
     

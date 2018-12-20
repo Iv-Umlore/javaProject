@@ -128,6 +128,7 @@ public class Branch implements BranchInterface{
     public void PlusPlusBranch() {
         numberAllBranch++;
         width = round(numberAllBranch / 2);
+        if (width == 0) width = 1;
         if ((this.GetParentBranch()) != null) GetParentBranch().PlusPlusBranch();
     }
     
