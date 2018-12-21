@@ -4,14 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageHandler.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Speaker.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/Image.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/UserIdentification.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/FirstWindowInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/LoginGUI.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/TreeManagement.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientGUI.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/Observer.java</file>
-            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Server/Server.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Users/Zemlyanskiy.txt</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientSpeakerInterface.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ImageInterface.java</file>
             <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/FirstWindow.java</file>
+            <file>file:/C:/Users/Umlore/Documents/NetBeansProjects/javaProject/src/javamainlab/Client/ClientSpeaker.java</file>
         </group>
     </open-files>
 </project-private>
