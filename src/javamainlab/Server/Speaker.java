@@ -62,9 +62,13 @@ public class Speaker extends Thread{
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(Speaker.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Клиент отключился!");
+            break;
         }
         }
+        TreeCh.SaveTree();
+        TreeCh.stop();
+        System.out.println("Поток заканчивает работу");
         
         // The algorithm of interaction will be here
         

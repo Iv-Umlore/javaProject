@@ -35,12 +35,12 @@ public class Tree implements TreeInterface{
         FileWay = "src\\javamainlab\\Users\\" + UN + ".txt";
         
         if (Bol) {
-            MainBranch = new Branch(up,120,240,null);
+            MainBranch = new Branch(up,146,478,null);
             //CurrentBranch = MainBranch;
             SaveTree();
         }
         else {
-            MainBranch = new Branch(up,120,240,null);
+            MainBranch = new Branch(up,146,478,null);
             SetTree();
         }       
         

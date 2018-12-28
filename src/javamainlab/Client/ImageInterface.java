@@ -15,12 +15,11 @@ public interface ImageInterface {
     
      public void PaintTree(Object tree);
      
-     public int[][] GetImage();
+     public int[] GetImage();
      
      public void SetTree(String str);
      
      public String GetImageTree();
      
-     public void Draw();
-     
+     public int DrawWidth();
 }
