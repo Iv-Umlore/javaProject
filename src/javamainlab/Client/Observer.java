@@ -16,22 +16,28 @@ public class Observer extends Thread{
     
     private ImageHandler _IH;
     private ClientGUI CGU;
+    private int _speed;
     
     public Observer(ImageHandler IH, ClientGUI CGUI){
         _IH = IH;
         CGU = CGUI;
+        _speed = 1000;
+    }
+    
+    public void ChangeSpeed(int speed){
+        _speed = speed;
     }
     
     @Override
     public void run() {
         while (true) {
-            if (_IH.GetChanges()) {
-                CGU.ReDraw();
-            }
             try {
-                sleep(250);
+                sleep(_speed);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Observer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (_IH.GetChanges()) {
+                CGU.ReDraw();
             }
         }
     }

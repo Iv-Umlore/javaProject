@@ -50,7 +50,7 @@ public class Branch implements BranchInterface{
         StartX = X;
         StartY = Y;
         Direct = _thisBranch;
-        length = rand.nextInt(5) + 4;
+        length = rand.nextInt(5) + 20;
         width = 1;
         numberAllBranch = 1;
         numberHerBranches = 0;

@@ -11,15 +11,13 @@ package javamainlab.Client;
  */
 public class Image implements ImageInterface {    
     
-    int[][] arr;
+    int[] arr;
+    
+    public int width;
     
     String Tree;
     
     Image() {}
-    
-    public int[][] ReturnArray() {
-        return arr;
-    }
     
     @Override
     public void Refresh() {
@@ -29,12 +27,7 @@ public class Image implements ImageInterface {
     @Override
     public void PaintTree(Object tree) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int[][] GetImage() {
-        return arr;
-    }    
+    }  
 
     @Override
     public void SetTree(String str) {
@@ -43,6 +36,8 @@ public class Image implements ImageInterface {
         int ForFor = 0;
         int i = 0;
         int j = 0;
+        int z = 0;
+        int value;
         String LocalTree = "";
         
         while(str.charAt(i) != ' '){
@@ -51,9 +46,9 @@ public class Image implements ImageInterface {
         }
         
         ForFor = Integer.parseInt(LocalTree);
-        
+        arr = new int[ForFor * 4];
         int wordnumb;
-        for (j = 0; j < ForFor; j++) { 
+        for (j = 0; j < ForFor; j++) {
             wordnumb = 0;
         while (str.charAt(i) != '\n') {
             
@@ -63,8 +58,7 @@ public class Image implements ImageInterface {
             while ((str.charAt(i) != ' ') && (str.charAt(i) != '\n')) {                
                 LocalTree += str.charAt(i);
                 i++;
-            }            
-           
+            }
             
             switch (wordnumb) {
                 case 0: {
@@ -72,22 +66,31 @@ public class Image implements ImageInterface {
                 }
                 case 1: {                    
                     Tree += "( " + LocalTree + ", ";
+                    arr[z] = Integer.parseInt(LocalTree);
+                    z++;
                     break;
                 }
                 case 2: {
                     Tree += LocalTree + " )";
+                    arr[z] = Integer.parseInt(LocalTree);
+                    z++;
                     break;
                 }
                 case 3: {
                     Tree += " ( " + LocalTree + ", ";
+                    arr[z] = Integer.parseInt(LocalTree);
+                    z++;
                     break;
                 }
                 case 4: {
                     Tree += LocalTree + " ) ";
+                    arr[z] = Integer.parseInt(LocalTree);
+                    z++;
                     break;
                 }
                 case 5: {
                     Tree += " width : " + LocalTree;
+                    width = Integer.parseInt(LocalTree);
                     break;
                 }
                 case 6: {
@@ -103,13 +106,18 @@ public class Image implements ImageInterface {
     }
 
     @Override
+    public int[] GetImage() {
+        return arr;
+    }  
+    
+    @Override
     public String GetImageTree() {
         return Tree;
     }
     
     @Override
-    public void Draw() {
-        System.out.println(Tree);
+    public int DrawWidth() {
+        return width;
     }
     
 }

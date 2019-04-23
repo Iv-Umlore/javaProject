@@ -34,13 +34,21 @@ public class ImageHandler extends Thread{
         return image.GetImageTree();
     }
     
+    public int GetWidth(){
+        return image.DrawWidth();
+    }
+    
+    public int[] GetValuesTree(){
+        return image.GetImage();
+    }
+    
     @Override
     public void run() {
         while (true) {
             image.SetTree(_CSI.GetImage());
             changes = true;
             try {    
-                sleep(1000);
+                sleep(2000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ImageHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
